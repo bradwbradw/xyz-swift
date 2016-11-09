@@ -12,11 +12,11 @@ class SpaceTableViewController: UITableViewController {
 
     var spaces:[AnyObject] = []
     
-    var newSpace:AnyObject?
+    var newSpace:Space?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
-        if let spaceView = segue.destination as? SpaceViewController {
+        if let spaceView = segue.destination as? DotViewController {
             spaceView.space = self.newSpace
             
         }
@@ -70,7 +70,12 @@ class SpaceTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
         //CODE TO BE RUN ON CELL TOUCH
         print(spaces[indexPath.row]["name"]! ?? "no spaces loaded");
-        self.newSpace = spaces[indexPath.row]
+        
+        guard let name = spaces[indexPath.row]["name"] as? String else {
+            print("could not get space name")
+            return
+        }
+        self.newSpace =  Space(name: name)
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }
 

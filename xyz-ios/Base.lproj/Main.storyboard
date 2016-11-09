@@ -108,7 +108,7 @@
                         <viewControllerLayoutGuide type="top" id="Wdj-Km-fxP"/>
                         <viewControllerLayoutGuide type="bottom" id="g0h-xX-Xw3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YGy-YP-Lnd">
+                    <view key="view" contentMode="scaleToFill" id="YGy-YP-Lnd" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
