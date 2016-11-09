@@ -23,19 +23,13 @@ class SpaceTableViewController: UITableViewController {
         
     }
     
-
-    
-    
-    
-    
-    
-    
-    
     func loadSpaces(){
-        let filter:String = "{\"where\":{\"public\":true}}"
+        let filter:String = "{\"where\":{\"public\":true},\"include\":[\"songs\"]}"
         let spaceApiUrl:String = "https://xyz.gs/api/spaces?filter="+filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let requestURL: URL = URL(string: spaceApiUrl)!
-        let urlRequest: URLRequest = URLRequest(url: requestURL as URL)
+        let urlObj: URL = URL(string: spaceApiUrl)!
+        let urlRequest: URLRequest = URLRequest(url: urlObj as URL)
+        print("the url is....");
+        print(urlObj);
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest as URLRequest) {
             (data, response, error) -> Void in
@@ -75,7 +69,7 @@ class SpaceTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
         //CODE TO BE RUN ON CELL TOUCH
-        print(spaces[indexPath.row]["name"]!);
+        print(spaces[indexPath.row]["name"]! ?? "no spaces loaded");
         self.newSpace = spaces[indexPath.row]
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }

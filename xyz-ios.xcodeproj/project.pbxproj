@@ -14,6 +14,10 @@
 		A287A3BA1DADC6E800C2F4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B81DADC6E800C2F4C4 /* LaunchScreen.storyboard */; };
 		A287A3C51DADC6E800C2F4C4 /* xyz_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3C41DADC6E800C2F4C4 /* xyz_iosTests.swift */; };
 		A287A3D01DADC6E900C2F4C4 /* xyz_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3CF1DADC6E900C2F4C4 /* xyz_iosUITests.swift */; };
+		A28C4BF61DD2C26200E5B338 /* DotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* DotViewController.swift */; };
+		A28C4BF81DD2C2D700E5B338 /* DotViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */; };
+		A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
+		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
 		A2FBDAED1DC94551000DCEAA /* SpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,11 @@
 		A287A3CB1DADC6E800C2F4C4 /* xyz-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xyz-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A287A3CF1DADC6E900C2F4C4 /* xyz_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xyz_iosUITests.swift; sourceTree = "<group>"; };
 		A287A3D11DADC6E900C2F4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A28C4BF51DD2C26200E5B338 /* DotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotViewController.swift; sourceTree = "<group>"; };
+		A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotViewScene.swift; sourceTree = "<group>"; };
+		A28C4BF91DD2CE4B00E5B338 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A28C4BFB1DD2CE8100E5B338 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		A2BC64591DC9929C006FA81C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +88,7 @@
 		A287A3A31DADC6E800C2F4C4 = {
 			isa = PBXGroup;
 			children = (
+				A2BC64591DC9929C006FA81C /* .gitignore */,
 				A287A3AE1DADC6E800C2F4C4 /* xyz-ios */,
 				A287A3C31DADC6E800C2F4C4 /* xyz-iosTests */,
 				A287A3CE1DADC6E800C2F4C4 /* xyz-iosUITests */,
@@ -106,6 +116,10 @@
 				A287A3B81DADC6E800C2F4C4 /* LaunchScreen.storyboard */,
 				A287A3BB1DADC6E800C2F4C4 /* Info.plist */,
 				A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */,
+				A28C4BF51DD2C26200E5B338 /* DotViewController.swift */,
+				A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */,
+				A28C4BF91DD2CE4B00E5B338 /* Item.swift */,
+				A28C4BFB1DD2CE8100E5B338 /* Space.swift */,
 			);
 			path = "xyz-ios";
 			sourceTree = "<group>";
@@ -191,7 +205,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Bradley Winter";
 				TargetAttributes = {
 					A287A3AB1DADC6E800C2F4C4 = {
@@ -267,7 +281,11 @@
 			files = (
 				A287A3B21DADC6E800C2F4C4 /* SpaceViewController.swift in Sources */,
 				A2FBDAED1DC94551000DCEAA /* SpaceTableViewController.swift in Sources */,
+				A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */,
+				A28C4BF61DD2C26200E5B338 /* DotViewController.swift in Sources */,
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
+				A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */,
+				A28C4BF81DD2C2D700E5B338 /* DotViewScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +358,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -389,6 +408,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

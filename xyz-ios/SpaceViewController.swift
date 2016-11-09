@@ -14,11 +14,16 @@ class SpaceViewController: UIViewController {
 
     @IBOutlet weak var spaceTitle: UILabel!
     
+    @IBOutlet weak var firstSong: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         print("i got a space: ")
-        print(space?["name"])
+        print(space?["name"] as Any)
         spaceTitle.text = space!["name"] as? String
+        
+        var songs = space!["songs"] as? [AnyObject];
+        
+        firstSong.text = songs?[0]["title"] as? String
         // Do any additional setup after loading the view, typically from a nib.
     }
 
