@@ -58,49 +58,6 @@
             <point key="canvasLocation" x="620" y="158"/>
         </scene>
         <!--Space View Controller-->
-        <scene sceneID="b6d-Su-zPD">
-            <objects>
-                <viewController id="8sh-uf-67u" customClass="SpaceViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dd9-jx-Idk"/>
-                        <viewControllerLayoutGuide type="bottom" id="sGq-Hb-4at"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CGN-6y-QnQ" customClass="DotView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SPACE!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbf-cz-Lz5">
-                                <rect key="frame" x="97" y="187" width="181" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJ5-Nx-X6D">
-                                <rect key="frame" x="16" y="360" width="333" height="194"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1d-Ig-0FB" customClass="DotView">
-                                <rect key="frame" x="62" y="224" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="firstSong" destination="vJ5-Nx-X6D" id="vBM-BR-Odp"/>
-                        <outlet property="spaceTitle" destination="Dbf-cz-Lz5" id="93l-kV-a5x"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9hJ-oq-o5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1441" y="-404"/>
-        </scene>
-        <!--Space View Controller-->
         <scene sceneID="cFm-aO-80d">
             <objects>
                 <viewController id="jFW-jm-MZ1" customClass="SpaceViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">

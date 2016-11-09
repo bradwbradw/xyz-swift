@@ -94,7 +94,7 @@ class SpaceTableViewController: UITableViewController {
             cleanItems.append(Item(params: initParams, position: point))
         }
         let spaceParams: [String: String] = [
-            "name": spaces[indexPath.row]["name"] as! String
+            "name": name
         ]
         self.newSpace =  Space(params: spaceParams, items: cleanItems)
         self.performSegue(withIdentifier: "goToSpace", sender: self)
