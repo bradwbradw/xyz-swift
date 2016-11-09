@@ -10,13 +10,17 @@
 class Item {
     //    var id: String
     var title: String
+    var position: (Int, Int)
     //    var artist: String
     //    var provider: String
     //    var provider_id: String
     
     
-    init(title: String){
-        self.title = title
+    init(params: [String: String], position: (Int, Int)){
+        self.title = params["title"]!
+        self.position = position
+        
+        print("creating new item: \(self.title) with x \(self.position.0) and y \(self.position.1)")
     }
     
 }

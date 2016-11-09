@@ -16,7 +16,7 @@ class SpaceTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
-        if let spaceView = segue.destination as? DotViewController {
+        if let spaceView = segue.destination as? SpaceViewController {
             spaceView.space = self.newSpace
             
         }
@@ -75,7 +75,28 @@ class SpaceTableViewController: UITableViewController {
             print("could not get space name")
             return
         }
-        self.newSpace =  Space(name: name)
+        guard let items = spaces[indexPath.row]["songs"] as? [AnyObject] else {
+            print("could not get items")
+            return
+        }
+        
+        var cleanItems = [Item]()
+        for item in items{
+            let initParams: [String: String] =
+                ["title": item["title"] as! String ]
+            var point = (x:0, y:0)
+            if let x = item["x"] as! Int?{
+                point.x = x
+            }
+            if let y = item["y"] as! Int?{
+                point.y = y
+            }
+            cleanItems.append(Item(params: initParams, position: point))
+        }
+        let spaceParams: [String: String] = [
+            "name": spaces[indexPath.row]["name"] as! String
+        ]
+        self.newSpace =  Space(params: spaceParams, items: cleanItems)
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }
 

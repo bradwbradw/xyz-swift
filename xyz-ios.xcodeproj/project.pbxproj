@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */; };
-		A287A3B21DADC6E800C2F4C4 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3B11DADC6E800C2F4C4 /* SpaceViewController.swift */; };
 		A287A3B51DADC6E800C2F4C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B31DADC6E800C2F4C4 /* Main.storyboard */; };
 		A287A3B71DADC6E800C2F4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */; };
 		A287A3BA1DADC6E800C2F4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B81DADC6E800C2F4C4 /* LaunchScreen.storyboard */; };
 		A287A3C51DADC6E800C2F4C4 /* xyz_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3C41DADC6E800C2F4C4 /* xyz_iosTests.swift */; };
 		A287A3D01DADC6E900C2F4C4 /* xyz_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3CF1DADC6E900C2F4C4 /* xyz_iosUITests.swift */; };
-		A28C4BF61DD2C26200E5B338 /* DotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* DotViewController.swift */; };
+		A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
 		A28C4BF81DD2C2D700E5B338 /* DotViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */; };
 		A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
 		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		A287A3AC1DADC6E800C2F4C4 /* xyz-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xyz-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A287A3B11DADC6E800C2F4C4 /* SpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
 		A287A3B41DADC6E800C2F4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A287A3B91DADC6E800C2F4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,7 +50,7 @@
 		A287A3CB1DADC6E800C2F4C4 /* xyz-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xyz-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A287A3CF1DADC6E900C2F4C4 /* xyz_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xyz_iosUITests.swift; sourceTree = "<group>"; };
 		A287A3D11DADC6E900C2F4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A28C4BF51DD2C26200E5B338 /* DotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotViewController.swift; sourceTree = "<group>"; };
+		A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
 		A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotViewScene.swift; sourceTree = "<group>"; };
 		A28C4BF91DD2CE4B00E5B338 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A28C4BFB1DD2CE8100E5B338 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
@@ -110,13 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */,
-				A287A3B11DADC6E800C2F4C4 /* SpaceViewController.swift */,
 				A287A3B31DADC6E800C2F4C4 /* Main.storyboard */,
 				A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */,
 				A287A3B81DADC6E800C2F4C4 /* LaunchScreen.storyboard */,
 				A287A3BB1DADC6E800C2F4C4 /* Info.plist */,
 				A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */,
-				A28C4BF51DD2C26200E5B338 /* DotViewController.swift */,
+				A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */,
 				A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */,
 				A28C4BF91DD2CE4B00E5B338 /* Item.swift */,
 				A28C4BFB1DD2CE8100E5B338 /* Space.swift */,
@@ -279,10 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A287A3B21DADC6E800C2F4C4 /* SpaceViewController.swift in Sources */,
 				A2FBDAED1DC94551000DCEAA /* SpaceTableViewController.swift in Sources */,
 				A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */,
-				A28C4BF61DD2C26200E5B338 /* DotViewController.swift in Sources */,
+				A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */,
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
 				A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */,
 				A28C4BF81DD2C2D700E5B338 /* DotViewScene.swift in Sources */,

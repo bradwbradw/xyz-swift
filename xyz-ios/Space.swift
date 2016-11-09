@@ -8,14 +8,15 @@
 
 class Space {
     
-    //    var id: String
     var name: String
     var items: [Item]
     
-    init(name: String){
-        self.name = name
-        self.items = []
+    init(params: [String:String], items: [Item]){
+        self.name = params["name"]!
+        self.items = items
+        print("initialized Space with name \(self.name)")
     }
+    
     subscript(name: String) -> String {
         
         get {

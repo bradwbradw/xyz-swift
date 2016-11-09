@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="1441" y="-404"/>
         </scene>
-        <!--Dot View Controller-->
+        <!--Space View Controller-->
         <scene sceneID="cFm-aO-80d">
             <objects>
-                <viewController id="jFW-jm-MZ1" customClass="DotViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jFW-jm-MZ1" customClass="SpaceViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wdj-Km-fxP"/>
                         <viewControllerLayoutGuide type="bottom" id="g0h-xX-Xw3"/>
