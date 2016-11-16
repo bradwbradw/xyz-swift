@@ -18,9 +18,7 @@ class SpaceTableViewController: UITableViewController {
         
         if let spaceView = segue.destination as? SpaceViewController {
             spaceView.space = self.newSpace
-            
         }
-        
     }
     
     func loadSpaces(){

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kN2-D1-eRH" id="ZA0-4r-PkX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -68,12 +69,40 @@
                     <view key="view" contentMode="scaleToFill" id="YGy-YP-Lnd" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqy-QA-mOl">
+                                <rect key="frame" x="188" y="501" width="187" height="166"/>
+                                <color key="backgroundColor" red="0.0" green="0.63475222788013852" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="aHt-7M-rLL" kind="embed" id="UVQ-89-x3f"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dqy-QA-mOl" firstAttribute="height" secondItem="YGy-YP-Lnd" secondAttribute="height" multiplier="0.25" id="1Qx-cR-TV4"/>
+                            <constraint firstAttribute="trailing" secondItem="Dqy-QA-mOl" secondAttribute="trailing" id="7rX-TU-dVb"/>
+                            <constraint firstItem="g0h-xX-Xw3" firstAttribute="top" secondItem="Dqy-QA-mOl" secondAttribute="bottom" id="YL5-Wd-4zi"/>
+                            <constraint firstItem="Dqy-QA-mOl" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" multiplier="0.5" id="v0z-LN-lsy"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="288"/>
+            <point key="canvasLocation" x="1440.8" y="287.40629685157421"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MWq-je-QIW">
+            <objects>
+                <viewController id="aHt-7M-rLL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D38-j6-5Dy">
+                        <rect key="frame" x="0.0" y="0.0" width="187" height="166"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7f-IV-MNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>

@@ -14,21 +14,19 @@ class SpaceViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = DotViewScene(size: view.bounds.size)
+        
+        print("i got a space: ")
+        print(space?["name"] as String!)
+    
+//        let scene = HomeScene(size:screenSize, scaleMode:SKSceneScaleMode.AspectFill, viewController: self)
+
+        let scene = DotViewScene(size: view.bounds.size, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-        
-        
-        print("i got a space: ")
-        print(space?["name"] as String!)
-    
-        let songs = space?["items"] as [Item]!;
-        
-        print(songs ?? "trying to print songs");
         
     }
     

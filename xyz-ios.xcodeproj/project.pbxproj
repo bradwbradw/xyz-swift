@@ -17,6 +17,7 @@
 		A28C4BF81DD2C2D700E5B338 /* DotViewScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */; };
 		A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
 		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
+		A2BB28551DDC02A1002500EF /* DotSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BB28541DDC02A1002500EF /* DotSpriteNode.swift */; };
 		A2FBDAED1DC94551000DCEAA /* SpaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotViewScene.swift; sourceTree = "<group>"; };
 		A28C4BF91DD2CE4B00E5B338 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A28C4BFB1DD2CE8100E5B338 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		A2BB28541DDC02A1002500EF /* DotSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotSpriteNode.swift; sourceTree = "<group>"; };
 		A2BC64591DC9929C006FA81C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 			children = (
 				A2BC64591DC9929C006FA81C /* .gitignore */,
 				A287A3AE1DADC6E800C2F4C4 /* xyz-ios */,
+				A2BB28531DDADA72002500EF /* Classes */,
 				A287A3C31DADC6E800C2F4C4 /* xyz-iosTests */,
 				A287A3CE1DADC6E800C2F4C4 /* xyz-iosUITests */,
 				A287A3AD1DADC6E800C2F4C4 /* Products */,
@@ -115,8 +118,6 @@
 				A2FBDAEC1DC94551000DCEAA /* SpaceTableViewController.swift */,
 				A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */,
 				A28C4BF71DD2C2D700E5B338 /* DotViewScene.swift */,
-				A28C4BF91DD2CE4B00E5B338 /* Item.swift */,
-				A28C4BFB1DD2CE8100E5B338 /* Space.swift */,
 			);
 			path = "xyz-ios";
 			sourceTree = "<group>";
@@ -137,6 +138,17 @@
 				A287A3D11DADC6E900C2F4C4 /* Info.plist */,
 			);
 			path = "xyz-iosUITests";
+			sourceTree = "<group>";
+		};
+		A2BB28531DDADA72002500EF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A28C4BF91DD2CE4B00E5B338 /* Item.swift */,
+				A28C4BFB1DD2CE8100E5B338 /* Space.swift */,
+				A2BB28541DDC02A1002500EF /* DotSpriteNode.swift */,
+			);
+			name = Classes;
+			path = "xyz-ios";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2BB28551DDC02A1002500EF /* DotSpriteNode.swift in Sources */,
 				A2FBDAED1DC94551000DCEAA /* SpaceTableViewController.swift in Sources */,
 				A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */,
 				A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */,
