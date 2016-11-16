@@ -86,6 +86,9 @@
                             <constraint firstItem="Dqy-QA-mOl" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" multiplier="0.5" id="v0z-LN-lsy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mediaViewer" destination="Dqy-QA-mOl" id="tYi-i3-EDw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,6 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7f-IV-MNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2041" y="535"/>
         </scene>
     </scenes>
 </document>

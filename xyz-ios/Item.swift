@@ -36,6 +36,10 @@ class Item: SKSpriteNode {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touches end")
         print(title)
+        
+        NotificationCenter.default.post(name: Notification.Name("playItem"),
+                                        object: nil,
+                                        userInfo:["mediaInfo": self.title])
 //        print(event ?? "??")
 //        print(touches )
     }

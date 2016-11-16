@@ -12,6 +12,17 @@ class SpaceViewController: UIViewController{
     
     var space: Space?
 
+    @IBOutlet weak var mediaViewer: UIView!
+    
+    
+   
+    func playItem(notification : Notification){
+        if let mediaInfo = notification.userInfo?["mediaInfo"] as? String {
+            print("i have event and i have mediaViewer outlet!")
+            print(mediaInfo)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +39,9 @@ class SpaceViewController: UIViewController{
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playItem), name: Notification.Name("playItem"), object: nil)
+
     }
     
     override var prefersStatusBarHidden: Bool {
