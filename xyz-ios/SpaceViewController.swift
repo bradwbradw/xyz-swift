@@ -31,7 +31,7 @@ class SpaceViewController: UIViewController{
     
 //        let scene = HomeScene(size:screenSize, scaleMode:SKSceneScaleMode.AspectFill, viewController: self)
 
-        let scene = DotViewScene(size: view.bounds.size, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
+        let scene = SpaceViewDotScene(size: view.bounds.size, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
