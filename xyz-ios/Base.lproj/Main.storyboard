@@ -77,6 +77,20 @@
                                     <segue destination="aHt-7M-rLL" kind="embed" id="UVQ-89-x3f"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV">
+                                <rect key="frame" x="213" y="351" width="146" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW">
+                                        <rect key="frame" x="52" y="54" width="86" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.45178661329999997" green="1" blue="0.55102920470000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,7 +101,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mediaViewer" destination="Dqy-QA-mOl" id="tYi-i3-EDw"/>
+                        <outlet property="mediaPlayer2" destination="N8V-hQ-HcV" id="whl-B9-qH0"/>
+                        <outlet property="mediaPlayerView" destination="Dqy-QA-mOl" id="QY3-R1-NFE"/>
+                        <outlet property="nameLabel2" destination="NMY-bb-EuW" id="7iu-vn-cwx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -31,6 +31,11 @@ class LandingTableViewController: UITableViewController {
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest as URLRequest) {
             (data, response, error) -> Void in
+            
+            if((error) != nil){
+                print("error loading JSON:  \(error)")
+            }
+
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
             if (statusCode == 200) {

@@ -8,7 +8,6 @@
 
 import SpriteKit
 
-
 class Item: SKSpriteNode {
     //    var id: String
     var title: String
@@ -18,6 +17,7 @@ class Item: SKSpriteNode {
     //    var provider: String
     //    var provider_id: String
     
+    var delegate: MediaMethods?
     
     init(params: [String: String], position: (Int, Int)){
         self.title = params["title"]!
@@ -34,14 +34,15 @@ class Item: SKSpriteNode {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touches end")
-        print(title)
+//        
+//        NotificationCenter.default.post(name: Notification.Name("playItem"),
+//                                        object: nil,
+//                                        userInfo:["mediaInfo": self.title])
         
-        NotificationCenter.default.post(name: Notification.Name("playItem"),
-                                        object: nil,
-                                        userInfo:["mediaInfo": self.title])
-//        print(event ?? "??")
-//        print(touches )
+//        (self.view!.window!.rootViewController as! SpaceViewController).setActive(item: self)
+        
+        
+        delegate?.play(provider: self.title, id: "1234")
     }
 
     

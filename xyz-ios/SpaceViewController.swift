@@ -8,29 +8,41 @@
 
 import UIKit
 import SpriteKit
-class SpaceViewController: UIViewController{
+class SpaceViewController: UIViewController {
     
     var space: Space?
+    var activeItem: Item?
 
-    @IBOutlet weak var mediaViewer: UIView!
+    @IBOutlet weak var mediaPlayerView: UIView!
     
+    @IBOutlet weak var mediaPlayer2: UIView!
     
-   
-    func playItem(notification : Notification){
-        if let mediaInfo = notification.userInfo?["mediaInfo"] as? String {
-            print("i have event and i have mediaViewer outlet!")
-            print(mediaInfo)
+    @IBOutlet weak var nameLabel2: UILabel!
+    
+    func setActive(item: Item?){
+        guard let newItem = item else {
+            print("no item found in setActive");
+            return;
         }
+        print("setting new active item:")
+        print(newItem)
+        self.activeItem = newItem
     }
     
+    // TODO
+    // make viewdidload add a new player() object ref
+    //
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("i got a space: ")
         print(space?["name"] as String!)
-    
-//        let scene = HomeScene(size:screenSize, scaleMode:SKSceneScaleMode.AspectFill, viewController: self)
-
+        
+        let player = Player(label: nameLabel2)
+        
+        space?.setUpPlayer(player: player)
+        
         let scene = SpaceViewDotScene(size: view.bounds.size, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
         let skView = view as! SKView
         skView.showsFPS = true
@@ -39,9 +51,6 @@ class SpaceViewController: UIViewController{
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
         
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.playItem), name: Notification.Name("playItem"), object: nil)
-
     }
     
     override var prefersStatusBarHidden: Bool {
