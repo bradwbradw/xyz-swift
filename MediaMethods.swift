@@ -11,6 +11,6 @@ import Foundation
 
 protocol MediaMethods {
 
-    func play(provider: String, id: String)
+    func play(item: Item)
     
 }

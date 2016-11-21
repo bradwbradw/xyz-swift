@@ -86,14 +86,12 @@ class LandingTableViewController: UITableViewController {
         var cleanItems = [Item]()
         for item in items{
             let initParams: [String: String] =
-                ["title": item["title"] as! String ]
-            var point = (x:0, y:0)
-            if let x = item["x"] as! Int?{
-                point.x = x
-            }
-            if let y = item["y"] as! Int?{
-                point.y = y
-            }
+                ["title": item["title"] as! String,
+                 "provider": item["provider"] as! String,
+                 "provider_id": item["provider_id"] as! String,
+                 "id": item["id"] as! String]
+            let point = (item["x"] as! Int, item["y"] as! Int)
+            
             cleanItems.append(Item(params: initParams, position: point))
         }
         let spaceParams: [String: String] = [

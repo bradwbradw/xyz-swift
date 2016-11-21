@@ -10,17 +10,21 @@ import SpriteKit
 
 class Item: SKSpriteNode {
     //    var id: String
+    var id : String
     var title: String
     var x: Int
     var y: Int
     //    var artist: String
-    //    var provider: String
-    //    var provider_id: String
+    var provider: String
+    var provider_id: String
     
     var delegate: MediaMethods?
     
     init(params: [String: String], position: (Int, Int)){
         self.title = params["title"]!
+        self.provider = params["provider"]!
+        self.provider_id = params["provider_id"]!
+        self.id = params["id"]!
         self.x = position.0
         self.y = position.1
         let texture = SKTexture(imageNamed: "xyz-square")
@@ -42,7 +46,7 @@ class Item: SKSpriteNode {
 //        (self.view!.window!.rootViewController as! SpaceViewController).setActive(item: self)
         
         
-        delegate?.play(provider: self.title, id: "1234")
+        delegate?.play(item: self)
     }
 
     

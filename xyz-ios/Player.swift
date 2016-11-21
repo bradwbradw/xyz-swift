@@ -17,10 +17,10 @@ class Player: MediaMethods {
         self.label = label
     }
     
-        func play(provider: String, id: String){
-            
-            print("PLAY: \(provider) id \(id) ")
-            self.label.text = provider
+    func play(item:Item){
+        
+            print("PLAY: \(item.provider) id \(item.provider_id) ")
+            self.label.text = item.provider+" "+item.provider_id+" "+item.title
         }
     
     
