@@ -22,12 +22,16 @@ protocol MediaMethods {
 class Player: MediaMethods {
     
     var label: UILabel
-    var youtubePlayer: YoutubePlayer?
+    var youtubePlayerView: YTPlayerView?
     var scPlayer: AVPlayer?
+    
+    let youtubePlayerVars = [ "rel" : 0,
+                       "playsinline" : 1]
+
     
     init(label: UILabel, ytView: YTPlayerView){
         self.label = label
-        self.youtubePlayer = YoutubePlayer(view: ytView)
+        self.youtubePlayerView = ytView
     }
     
     func play(item:Item){
@@ -36,7 +40,8 @@ class Player: MediaMethods {
         self.label.text = item.provider+" "+item.provider_id+" "+item.title
         
         if(item.provider == "youtube"){
-            youtubePlayer?.play(id: item.provider_id)
+            
+            youtubePlayerView?.load(withVideoId: item.provider_id, playerVars: youtubePlayerVars)
             
         } else if (item.provider == "soundcloud"){
             
@@ -49,38 +54,5 @@ class Player: MediaMethods {
         }
     }
     
-    
-}
-
-class YoutubePlayer/*: YTPlayerView, YTPlayerViewDelegate*/ {
-    
-    var ytPlayer: YTPlayerView?
-    let playerVars = [ "rel" : 0,
-                       "playsinline" : 1]
-    
-    init(view: YTPlayerView){
-        //        super.init()
-        print("init youtubeplayer")
-        self.ytPlayer = view
-        //        self.delegate = self;
-    }
-    
-    func play(id: String){
-        
-        ytPlayer?.load(withVideoId: id,  playerVars: playerVars)
-        //        ytPlayer?.playVideo()
-        
-    }
-    
-    
-//    func didChangeTo(state: YTPlayerState){
-//        print("new YT Player state: \(state)")
-//    }
-
-    
-    //
-    //    required init?(coder aDecoder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
     
 }

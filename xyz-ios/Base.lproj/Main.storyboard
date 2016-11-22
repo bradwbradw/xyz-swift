@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="417" width="375" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YoutubePlayer" customModule="xyz_ios" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
                                         <rect key="frame" x="68" y="54" width="299" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,7 +93,6 @@
                     </view>
                     <connections>
                         <outlet property="itemNameLabel" destination="NMY-bb-EuW" id="0dX-PS-Kjr"/>
-                        <outlet property="mediaPlayer2" destination="N8V-hQ-HcV" id="whl-B9-qH0"/>
                         <outlet property="ytPlayer" destination="9gi-9b-rCS" id="JAD-Si-F5d"/>
                     </connections>
                 </viewController>

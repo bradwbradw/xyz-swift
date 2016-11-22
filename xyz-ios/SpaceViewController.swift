@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import youtube_ios_player_helper
 
-class SpaceViewController: UIViewController {
+class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     
     var space: Space?
     var activeItem: Item?
@@ -34,6 +34,7 @@ class SpaceViewController: UIViewController {
         
         let player = Player(label: itemNameLabel, ytView: ytPlayer)
         
+        ytPlayer.delegate = self
         space?.attachItemDelegatesTo(player: player)
         
         let scene = SpaceViewDotScene(size: view.bounds.size, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
@@ -44,6 +45,32 @@ class SpaceViewController: UIViewController {
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
         
+    }
+    
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        switch(state) {
+        case YTPlayerState.playing:
+            print("youtube started playback")
+            break
+        case YTPlayerState.paused:
+            print("youtube paused playback")
+            break
+        case YTPlayerState.ended:
+            print("youtube ended playback")
+            break
+        default:
+            break
+        }
+    }
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        print("youtube player is ready")
+        ytPlayer.playVideo()
+    }
+    
+    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+        print("youtube player error...")
+        print(error)
     }
     
     
