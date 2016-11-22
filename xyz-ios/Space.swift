@@ -15,11 +15,11 @@ class Space {
     init(params: [String:String], items: [Item]){
         self.name = params["name"]!
         self.items = items
-        print("initialized Space with name \(self.name)")
+//        print("initialized Space with name \(self.name)")
     
     }
     
-    func setUpPlayer(player: Player){
+    func attachItemDelegatesTo(player: Player){
         
         for item in self.items {
             item.delegate = player

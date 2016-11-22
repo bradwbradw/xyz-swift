@@ -26,7 +26,7 @@ class LandingTableViewController: UITableViewController {
         let spaceApiUrl:String = "https://xyz.gs/api/spaces?filter="+filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let urlObj: URL = URL(string: spaceApiUrl)!
         let urlRequest: URLRequest = URLRequest(url: urlObj as URL)
-        print("the url is....");
+        print("xyz spaces url is....");
         print(urlObj);
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest as URLRequest) {
@@ -45,7 +45,7 @@ class LandingTableViewController: UITableViewController {
                     func processData(arr: [AnyObject]){
                         self.spaces = [];
                         for space in arr {
-                            print("found a space: \(space["name"]) ")
+//                            print("found a space: \(space["name"]) ")
                             self.spaces.append(space);
                         }
                     }

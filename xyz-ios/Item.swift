@@ -33,19 +33,11 @@ class Item: SKSpriteNode {
         self.position = CGPoint(x:position.0, y: position.1)
         self.isUserInteractionEnabled = true
         
-        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
+//        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
     }
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//        NotificationCenter.default.post(name: Notification.Name("playItem"),
-//                                        object: nil,
-//                                        userInfo:["mediaInfo": self.title])
-        
-//        (self.view!.window!.rootViewController as! SpaceViewController).setActive(item: self)
-        
-        
         delegate?.play(item: self)
     }
 
