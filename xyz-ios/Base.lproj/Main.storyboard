@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w5I-T7-rsm">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -31,15 +31,15 @@
             <objects>
                 <tableViewController id="0OS-8V-9hq" customClass="LandingTableViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g6a-3m-5WK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="spaceCell" id="kN2-D1-eRH">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kN2-D1-eRH" id="ZA0-4r-PkX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -67,28 +67,27 @@
                         <viewControllerLayoutGuide type="bottom" id="g0h-xX-Xw3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YGy-YP-Lnd" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV">
-                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV" userLabel="media playback view">
+                                <rect key="frame" x="0.0" y="486" width="414" height="250"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
-                                        <rect key="frame" x="8" y="0.0" width="367" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
+                                        <rect key="frame" x="8" y="0.0" width="414" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-Hv-sjd">
-                                        <rect key="frame" x="19" y="25" width="338" height="225"/>
+                                        <rect key="frame" x="21" y="25" width="372" height="225"/>
                                         <color key="backgroundColor" red="0.58597404730000002" green="0.50337938199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="pgZ-hd-SFt" kind="embed" id="2O9-z1-ooB"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
-                                        <rect key="frame" x="19" y="25" width="337.5" height="225"/>
+                                        <rect key="frame" x="21" y="25" width="373" height="225"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -97,12 +96,15 @@
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="3DW-g1-33G"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" multiplier="0.9" id="6Mx-hX-MK2"/>
                                     <constraint firstAttribute="height" constant="250" id="CiJ-I1-Fa5"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="top" id="IVn-JT-Glt"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" constant="8" id="TjA-pi-Clu"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" multiplier="0.9" id="Z7N-hR-9DU"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="aqI-md-XSF"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="icY-DA-x85"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.9" id="m0h-EI-M5G"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.9" id="miF-tr-nmP"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="r2a-5h-jvs"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" id="sYu-ok-8jy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -122,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440.8" y="287.40629685157421"/>
+            <point key="canvasLocation" x="1440.5797101449277" y="286.95652173913044"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="uCm-SE-h5X">
@@ -130,7 +132,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pgZ-hd-SFt" customClass="SoundcloudViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auT-rb-n56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2101" y="180"/>
+            <point key="canvasLocation" x="2233" y="468"/>
         </scene>
     </scenes>
 </document>

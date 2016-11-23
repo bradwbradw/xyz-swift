@@ -16,7 +16,23 @@ class SpaceViewDotScene: SKScene {
     init(size:CGSize, scaleMode:SKSceneScaleMode, space:Space) {
         self.space = space
         self.items = space["items"] as [Item]!;
+        
         super.init(size:size)
+        
+        self.anchorPoint = CGPoint(x:0.5,y:0.5);
+        
+        let scrollingWorldNode = SKNode()
+        self.addChild(scrollingWorldNode)
+        
+        /*
+         SKNode *camera = [SKNode node];
+         camera.name = @"camera";
+         [myWorld addChild:camera];
+         */
+        let camera = SKNode()
+        camera.name = "camera"
+        scrollingWorldNode.addChild(camera)
+        
         self.scaleMode = scaleMode
         
         for item in items {
@@ -28,8 +44,22 @@ class SpaceViewDotScene: SKScene {
         helloNode.fontSize = 42;
         helloNode.position = CGPoint(x:size.width/2, y:size.height * 6/7)
         
+        
         //CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
         self.addChild(helloNode)
+    }
+    
+    
+    override func didFinishUpdate() {
+        if let cameraNode = childNode(withName: "camera"){
+            centerOnNode(node: cameraNode)
+        }
+    }
+    
+    func centerOnNode(node:SKNode)
+    {
+        let cameraPositionInScene: CGPoint = convert(node.position, from: node.parent!)
+        node.parent?.position = CGPoint(x: (node.parent?.position.x)! - cameraPositionInScene.x, y:(node.parent?.position.y)! - cameraPositionInScene.y);
     }
     
     required init?(coder aDecoder: NSCoder) {
