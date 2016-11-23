@@ -88,6 +88,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.45178661329999997" green="1" blue="0.55102920470000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-Hv-sjd">
+                                <rect key="frame" x="135" y="343" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.58597404730000002" green="0.50337938199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="pgZ-hd-SFt" kind="embed" id="2O9-z1-ooB"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -99,6 +107,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1440.8" y="287.40629685157421"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="uCm-SE-h5X">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pgZ-hd-SFt" customClass="SoundcloudViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auT-rb-n56" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2101" y="180"/>
         </scene>
     </scenes>
 </document>

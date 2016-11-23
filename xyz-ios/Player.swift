@@ -12,6 +12,7 @@ import UIKit
 import Soundcloud
 import youtube_ios_player_helper
 import AVFoundation
+import AVKit
 
 protocol MediaMethods {
     
@@ -23,11 +24,10 @@ class Player: MediaMethods {
     
     var label: UILabel
     var youtubePlayerView: YTPlayerView?
-    var scPlayer: AVPlayer?
     
     let youtubePlayerVars = [ "rel" : 0,
-                       "playsinline" : 1]
-
+                              "playsinline" : 1]
+    
     
     init(label: UILabel, ytView: YTPlayerView){
         self.label = label
@@ -44,15 +44,44 @@ class Player: MediaMethods {
             youtubePlayerView?.load(withVideoId: item.provider_id, playerVars: youtubePlayerVars)
             
         } else if (item.provider == "soundcloud"){
+            //
+            //            scPlayer = AVPlayer(url: URL(string: "https://api.soundcloud.com/tracks/\(item.provider_id)/stream?client_id=bbb313c3d63dc49cd5acc9343dada433")!)
+            //
+            //            scPlayer?.play()
+            //
             
-            scPlayer = AVPlayer(url: URL(string: "https://api.soundcloud.com/tracks/\(item.provider_id)/stream?client_id=bbb313c3d63dc49cd5acc9343dada433")!)
-            
-            scPlayer?.play()
-            
-            
+            NotificationCenter.default.post(name: Notification.Name("playSoundCloud"),
+                                            object: nil,
+                                            userInfo:["id":item.provider_id])
             
         }
     }
-    
-    
 }
+
+
+class SoundcloudViewController:  AVPlayerViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { (note) in
+            print("song done. note is... ")
+            print(note)
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name("playSoundCloud"), object: nil, queue: nil) { (note) in
+            print("song playing...note is ")
+            print(note)
+            self.play(id: (note.userInfo?["id"] as? String)!)
+        }
+        
+    }
+    
+    func play(id: String){
+        
+        self.player = AVPlayer(url: URL(string: "https://api.soundcloud.com/tracks/\(id)/stream?client_id=bbb313c3d63dc49cd5acc9343dada433")!)
+        self.player?.playImmediately(atRate: 1.0)
+        
+    }
+}
+
