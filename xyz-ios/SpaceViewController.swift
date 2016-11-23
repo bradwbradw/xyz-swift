@@ -17,6 +17,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
     
+    @IBOutlet weak var scPlayer: UIView!
     @IBOutlet weak var itemNameLabel: UILabel!
     
     func setActive(item: Item?){
@@ -32,7 +33,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let player = Player(label: itemNameLabel, ytView: ytPlayer)
+        let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
         ytPlayer.delegate = self
         space?.attachItemDelegatesTo(player: player)

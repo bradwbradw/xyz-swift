@@ -101,6 +101,7 @@
                     </view>
                     <connections>
                         <outlet property="itemNameLabel" destination="NMY-bb-EuW" id="0dX-PS-Kjr"/>
+                        <outlet property="scPlayer" destination="uRm-Hv-sjd" id="jja-wu-EWY"/>
                         <outlet property="ytPlayer" destination="9gi-9b-rCS" id="JAD-Si-F5d"/>
                     </connections>
                 </viewController>
