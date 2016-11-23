@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -69,35 +70,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV">
                                 <rect key="frame" x="0.0" y="417" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
-                                        <rect key="frame" x="68" y="54" width="299" height="188"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
-                                        <rect key="frame" x="8" y="0.0" width="367" height="48"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
+                                        <rect key="frame" x="8" y="0.0" width="367" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-Hv-sjd">
+                                        <rect key="frame" x="19" y="25" width="338" height="225"/>
+                                        <color key="backgroundColor" red="0.58597404730000002" green="0.50337938199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="pgZ-hd-SFt" kind="embed" id="2O9-z1-ooB"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
+                                        <rect key="frame" x="19" y="25" width="337.5" height="225"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.45178661329999997" green="1" blue="0.55102920470000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9gi-9b-rCS" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="3DW-g1-33G"/>
+                                    <constraint firstItem="9gi-9b-rCS" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" multiplier="0.9" id="6Mx-hX-MK2"/>
+                                    <constraint firstAttribute="height" constant="250" id="CiJ-I1-Fa5"/>
+                                    <constraint firstItem="uRm-Hv-sjd" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" multiplier="0.9" id="Z7N-hR-9DU"/>
+                                    <constraint firstItem="uRm-Hv-sjd" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="aqI-md-XSF"/>
+                                    <constraint firstItem="9gi-9b-rCS" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="icY-DA-x85"/>
+                                    <constraint firstItem="uRm-Hv-sjd" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.9" id="m0h-EI-M5G"/>
+                                    <constraint firstItem="9gi-9b-rCS" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.9" id="miF-tr-nmP"/>
+                                    <constraint firstItem="uRm-Hv-sjd" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="r2a-5h-jvs"/>
+                                </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-Hv-sjd">
-                                <rect key="frame" x="135" y="343" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.58597404730000002" green="0.50337938199999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="pgZ-hd-SFt" kind="embed" id="2O9-z1-ooB"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g0h-xX-Xw3" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="F1W-OJ-zny"/>
+                            <constraint firstItem="N8V-hQ-HcV" firstAttribute="leading" secondItem="YGy-YP-Lnd" secondAttribute="leading" id="HJn-iz-aDQ"/>
+                            <constraint firstItem="N8V-hQ-HcV" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" id="I3J-oN-vwK"/>
+                            <constraint firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="tne-7W-Qop"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="itemNameLabel" destination="NMY-bb-EuW" id="0dX-PS-Kjr"/>
