@@ -33,7 +33,7 @@ class Item: SKSpriteNode {
         self.position = CGPoint(x:position.0, y: position.1)
         self.isUserInteractionEnabled = true
         
-//        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
+        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
     }
     
     

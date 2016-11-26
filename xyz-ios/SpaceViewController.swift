@@ -14,8 +14,9 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     
     var space: Space?
     var activeItem: Item?
+    var scene: SpaceViewDotScene?
     
-    var spaceDimensions = CGSize(width: 1000, height: 1000)
+    var spaceDimensions = CGSize(width: 600, height: 600)
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
     
@@ -40,13 +41,13 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         ytPlayer.delegate = self
         space?.attachItemDelegatesTo(player: player)
         
-        let scene = SpaceViewDotScene(size: spaceDimensions, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
+        self.scene = SpaceViewDotScene(size: spaceDimensions, scaleMode:SKSceneScaleMode.aspectFill, space: space!)
         
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        skView.presentScene(scene)
+        skView.presentScene(self.scene)
         
     }
     
@@ -79,6 +80,13 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    
+    @IBAction func handlePan(recognizer: UIPanGestureRecognizer){
+        if let scene = self.scene{
+            scene.handlePan(recognizer: recognizer)
+        }
     }
 
 }

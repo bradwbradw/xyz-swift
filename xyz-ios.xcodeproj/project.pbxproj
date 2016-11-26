@@ -270,7 +270,7 @@
 				TargetAttributes = {
 					A287A3AB1DADC6E800C2F4C4 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = H7B6ZPEZ23;
+						DevelopmentTeam = 5276842KRP;
 						ProvisioningStyle = Automatic;
 					};
 					A287A3BF1DADC6E800C2F4C4 = {
@@ -638,12 +638,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H7B6ZPEZ23;
+				DEVELOPMENT_TEAM = 5276842KRP;
 				INFOPLIST_FILE = "xyz-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "gs.xyz.xyz-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "gs.xyz.xyz-ios2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -653,12 +654,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = H7B6ZPEZ23;
+				DEVELOPMENT_TEAM = 5276842KRP;
 				INFOPLIST_FILE = "xyz-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "gs.xyz.xyz-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "gs.xyz.xyz-ios2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

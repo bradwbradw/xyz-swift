@@ -97,6 +97,7 @@ class SoundcloudViewController:  AVPlayerViewController {
         }
     }
     func play(id: String){
+        print("PLAY")
         self.player = AVPlayer(url: URL(string: "https://api.soundcloud.com/tracks/\(id)/stream?client_id=bbb313c3d63dc49cd5acc9343dada433")!)
         self.player?.playImmediately(atRate: 1.0)
     }

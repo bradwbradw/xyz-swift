@@ -70,7 +70,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV" userLabel="media playback view">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV" userLabel="media playback view">
                                 <rect key="frame" x="0.0" y="486" width="414" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
@@ -109,12 +109,16 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="g0h-xX-Xw3" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="F1W-OJ-zny"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="leading" secondItem="YGy-YP-Lnd" secondAttribute="leading" id="HJn-iz-aDQ"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" id="I3J-oN-vwK"/>
                             <constraint firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="tne-7W-Qop"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NWt-GK-tCL" appends="YES" id="2zC-Ls-idF"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="itemNameLabel" destination="NMY-bb-EuW" id="0dX-PS-Kjr"/>
@@ -123,6 +127,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwT-6p-y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="NWt-GK-tCL">
+                    <connections>
+                        <action selector="handlePanWithRecognizer:" destination="jFW-jm-MZ1" id="ggB-Cv-uHo"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1440.5797101449277" y="286.95652173913044"/>
         </scene>
