@@ -88,7 +88,7 @@ class SoundcloudViewController:  AVPlayerViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.cleanNotificationThenPlay), name: Notification.Name("playSoundCloud"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.stop), name: Notification.Name("stopSoundCloud"), object: nil)
-
+        
     }
     
     func stop(){
@@ -101,7 +101,7 @@ class SoundcloudViewController:  AVPlayerViewController {
         self.player = AVPlayer(url: URL(string: "https://api.soundcloud.com/tracks/\(id)/stream?client_id=bbb313c3d63dc49cd5acc9343dada433")!)
         self.player?.playImmediately(atRate: 1.0)
     }
-
+    
     func cleanNotificationThenPlay(notification: Notification){
         let soundCloudId = (notification.userInfo?["soundCloudId"] as? String)!
         self.play(id: soundCloudId)

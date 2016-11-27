@@ -18,6 +18,8 @@ class Item: SKSpriteNode {
     var provider: String
     var provider_id: String
     
+    var dateSaved: Date?
+    
     var delegate: MediaMethods?
     
     init(params: [String: String], position: (Int, Int)){
@@ -40,7 +42,18 @@ class Item: SKSpriteNode {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.play(item: self)
     }
+    
+    func distanceTo(item: Item) -> CGFloat{
+        let dx = self.x - item.x
+        let dy = self.y - item.y
+        let sum = (dx * dx) + (dy * dy)
+        return sqrt(CGFloat(sum));
 
+    }
+
+    static func ==(first: Item, second: Item) -> Bool {
+        return first.id == second.id
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

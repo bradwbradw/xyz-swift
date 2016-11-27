@@ -13,7 +13,7 @@ class SpaceViewDotScene: SKScene {
     var space:Space
     var items:[Item]
     
-    let background = SKSpriteNode(imageNamed: "mountain")
+    let background = SKSpriteNode(color: .orange, size: CGSize.zero)
     
     init(size:CGSize, scaleMode:SKSceneScaleMode, space:Space) {
         
@@ -25,6 +25,7 @@ class SpaceViewDotScene: SKScene {
      
         self.background.name = "background"
         self.background.anchorPoint = CGPoint(x: 0, y: 0)
+        self.background.size = size
         // 2
         self.addChild(background)
 //
@@ -88,7 +89,6 @@ class SpaceViewDotScene: SKScene {
 
     }
     func handlePan(recognizer: UIPanGestureRecognizer){
-        print(recognizer.state.hashValue);
         
         let translation = recognizer.translation(in: self.view)
         if let camera = self.camera{

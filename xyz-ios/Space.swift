@@ -10,13 +10,32 @@ class Space {
     
     var name: String
     var items: [Item]
+    var id: String
+    var firstSong: Item?
+    var playlist: [Item]?
     
+    let Playlister = PlaylisterSingleton.sharedInstance
     
     init(params: [String:String], items: [Item]){
         self.name = params["name"]!
+        self.id = params["id"]!
         self.items = items
-//        print("initialized Space with name \(self.name)")
-    
+        
+        if let firstSongId = params["firstSong"]{
+            var found = false
+            for item in items{
+                if (!found && item.id == firstSongId){
+                    self.firstSong = item
+                    found = true
+                }
+            }
+        }
+        
+        Playlister.upsertFrom(space: self)
+        
+        print("initialized Space with name \(self.name). playlist is...")
+        Playlister.map[self.id]?.describe()
+        
     }
     
     func attachItemDelegatesTo(player: Player){
@@ -24,8 +43,9 @@ class Space {
         for item in self.items {
             item.delegate = player
         }
-
+        
     }
+    
     
     subscript(name: String) -> String {
         

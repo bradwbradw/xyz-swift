@@ -10,6 +10,8 @@ import UIKit
 
 class LandingTableViewController: UITableViewController {
     
+    let Spaces = SpacesSingleton.sharedInstance
+    
     var spaces:[AnyObject] = []
     
     var newSpace:Space?
@@ -78,6 +80,10 @@ class LandingTableViewController: UITableViewController {
             print("could not get space name")
             return
         }
+        guard let id = spaces[indexPath.row]["id"] as? String else {
+            print("could not get space id")
+            return
+        }
         guard let items = spaces[indexPath.row]["songs"] as? [AnyObject] else {
             print("could not get items")
             return
@@ -95,9 +101,12 @@ class LandingTableViewController: UITableViewController {
             cleanItems.append(Item(params: initParams, position: point))
         }
         let spaceParams: [String: String] = [
-            "name": name
+            "name": name,
+            "id":id,
+            "firstSong":(spaces[indexPath.row]["firstSong"] as? String)!
         ]
         self.newSpace =  Space(params: spaceParams, items: cleanItems)
+        Spaces.upsert(space: self.newSpace!)
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }
     
