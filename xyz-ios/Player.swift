@@ -25,23 +25,42 @@ class Player: MediaMethods {
     var label: UILabel
     var youtubePlayerView: YTPlayerView?
     var soundcloudPlayerView: UIView?
+    var playingSpace: Space?
     
     let youtubePlayerVars = [ "rel" : 0,
                               "playsinline" : 1]
     
-    var nowPlaying: Item?
+    let Playlister = PlaylisterSingleton.sharedInstance
+    
     init(label: UILabel, ytView: YTPlayerView, scView: UIView){
         self.label = label
         self.youtubePlayerView = ytView
         self.soundcloudPlayerView = scView
         
-        NotificationCenter.default.addObserver(forName: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { (note) in
-            
-            print("song done. now playing was...")
-            print(self.nowPlaying as Any)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
+    @objc func didFinishPlaying(){
+        let finishedItem = self.Playlister.getNowPlaying()!
+        print("song done. now playing was...")
+        print(finishedItem)
+        
+        let playlist = Playlister.get(forSpace: self.playingSpace!)!.entries!
+        
+        if let i = playlist.index(of:finishedItem){
+            
+            let nextItem: Item?
+            if (i + 1 == playlist.count){
+                nextItem  = playlist[0]
+            } else {
+                nextItem = playlist[i+1]
+            }
+            
+            play(item: nextItem!)
+        }
+        
+        
+    }
     func showYoutube(){
         youtubePlayerView?.isHidden = false
         soundcloudPlayerView?.isHidden = true
@@ -61,7 +80,7 @@ class Player: MediaMethods {
         
         print("PLAY: \(item.provider) id \(item.provider_id) ")
         self.label.text = item.provider+" "+item.provider_id+" "+item.title
-        self.nowPlaying = item
+        Playlister.nowPlaying = item
         
         stopAll()
         if(item.provider == "youtube"){

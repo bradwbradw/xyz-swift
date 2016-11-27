@@ -36,6 +36,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         
         let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
+        player.playingSpace = self.space
         ytPlayer.delegate = self
         space?.attachItemDelegatesTo(player: player)
         
@@ -59,6 +60,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
             break
         case YTPlayerState.ended:
             print("youtube ended playback")
+//            player.didFinishPlaying(<#T##Player#>)
             break
         default:
             break
