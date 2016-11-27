@@ -12,6 +12,7 @@ import youtube_ios_player_helper
 
 class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     
+    let Spaces = SpacesSingleton.sharedInstance
     var space: Space?
     var activeItem: Item?
     var scene: SpaceViewDotScene?
@@ -36,9 +37,11 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         
         let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
-        player.playingSpace = self.space
+        space = Spaces.viewing!
+
+        player.playingSpace = space
         ytPlayer.delegate = self
-        space?.attachItemDelegatesTo(player: player)
+        space!.attachItemDelegatesTo(player: player)
         
         self.scene = SpaceViewDotScene(space: space!)
         

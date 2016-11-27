@@ -12,6 +12,9 @@ class SpacesSingleton {
 
     static let sharedInstance = SpacesSingleton()
     
+    var viewing: Space?
+    var playing: Space?
+    
     var map: [String: Space] = [:]
     
     private init(){

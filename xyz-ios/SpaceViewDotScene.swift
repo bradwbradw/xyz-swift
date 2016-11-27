@@ -20,8 +20,8 @@ class SpaceViewDotScene: SKScene {
         
         self.space = space
         self.items = space["items"] as [Item]!;
-        super.init(size:CGSize(width: Constants.SPACE_DIMENSIONS.width,
-                               height: Constants.SPACE_DIMENSIONS.height))
+        super.init(size:CGSize(width: SPACE_DIMENSIONS.width,
+                               height: SPACE_DIMENSIONS.height))
         print("init scene with size...")
         print(size)
      
@@ -58,7 +58,7 @@ class SpaceViewDotScene: SKScene {
         self.addChild(cameraNode)
         self.camera = cameraNode
         
-        let helloNode:SKLabelNode = SKLabelNode(fontNamed: "Chalkduster")
+        let helloNode:SKLabelNode = SKLabelNode(fontNamed: "Helvetica")
         helloNode.text = space.name;
         helloNode.fontSize = 42;
         helloNode.position = CGPoint(x:size.width/2, y:size.height * 6/7)

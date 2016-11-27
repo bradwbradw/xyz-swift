@@ -8,11 +8,11 @@
 
 import UIKit
 
-class LandingTableViewController: UITableViewController {
+class LandingTableViewController: UITableViewController, ServerSignals {
     
+    var delegate = self
     let Spaces = SpacesSingleton.sharedInstance
-    
-    var spaces:[AnyObject] = []
+    var spaces:[Space] = []
     
     var newSpace:Space?
     
@@ -23,93 +23,24 @@ class LandingTableViewController: UITableViewController {
         }
     }
     
-    func loadSpaces(){
-        let filter:String = "{\"where\":{\"public\":true},\"include\":[\"songs\"]}"
-        let spaceApiUrl:String = "https://xyz.gs/api/spaces?filter="+filter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-        let urlObj: URL = URL(string: spaceApiUrl)!
-        let urlRequest: URLRequest = URLRequest(url: urlObj as URL)
-        print("xyz spaces url is....");
-        print(urlObj);
-        let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest as URLRequest) {
-            (data, response, error) -> Void in
-            
-            if((error) != nil){
-                print("error loading JSON:  \(error)")
-            }
-
-            let httpResponse = response as! HTTPURLResponse
-            let statusCode = httpResponse.statusCode
-            if (statusCode == 200) {
-                print("spaces downloaded successfully.")
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [AnyObject]
-                    func processData(arr: [AnyObject]){
-                        self.spaces = [];
-                        for space in arr {
-//                            print("found a space: \(space["name"]) ")
-                            self.spaces.append(space);
-                        }
-                    }
-                    var results:[AnyObject] = [];
-                    if let spacesFromJson = json as [AnyObject]? {
-                        results += spacesFromJson
-                    }
-                    processData(arr: results)
-                    self.tableView.reloadData();
-                }catch {
-                    print("Error with Json: \(error)")
-                }
-            }
-        }
-        task.resume()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.loadSpaces();
+        Server.loadSpaces();
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
         //CODE TO BE RUN ON CELL TOUCH
-        print(spaces[indexPath.row]["name"]! ?? "no spaces loaded");
-        
-        guard let name = spaces[indexPath.row]["name"] as? String else {
-            print("could not get space name")
-            return
-        }
-        guard let id = spaces[indexPath.row]["id"] as? String else {
-            print("could not get space id")
-            return
-        }
-        guard let items = spaces[indexPath.row]["songs"] as? [AnyObject] else {
-            print("could not get items")
-            return
-        }
-        
-        var cleanItems = [Item]()
-        for item in items{
-            let initParams: [String: String] =
-                ["title": item["title"] as! String,
-                 "provider": item["provider"] as! String,
-                 "provider_id": item["provider_id"] as! String,
-                 "id": item["id"] as! String]
-            let point = (item["x"] as! Int, item["y"] as! Int)
-            
-            cleanItems.append(Item(params: initParams, position: point))
-        }
-        let spaceParams: [String: String] = [
-            "name": name,
-            "id":id,
-            "firstSong":(spaces[indexPath.row]["firstSong"] as? String)!
-        ]
-        self.newSpace =  Space(params: spaceParams, items: cleanItems)
-        Spaces.upsert(space: self.newSpace!)
+        let newViewingSpace = spaces[indexPath.row]
+        print( "now viewing space \(newViewingSpace.name )");
+        Spaces.viewing = newViewingSpace
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }
     
+    func didLoadSpaces(){
+        self.tableView.reloadData()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -133,7 +64,7 @@ class LandingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "spaceCell", for: indexPath)
         
         // Configure the cell...
-        cell.textLabel!.text = spaces[indexPath.row]["name"] as? String
+        cell.textLabel!.text = spaces[indexPath.row].name
         // Configure the cell...
         
         return cell

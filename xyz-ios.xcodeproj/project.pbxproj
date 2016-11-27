@@ -10,6 +10,28 @@
 		032D3CF7DEB0BF84DC8071C0 /* Pods_xyz_iosUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35FC31E16846CAD4A6D66EF /* Pods_xyz_iosUITests.framework */; };
 		0E9A946BC2D446684E1880E0 /* Pods_xyz_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939BF4FD84B7B05E7F786EBF /* Pods_xyz_ios.framework */; };
 		1161EDFB94F69E75F4F07D78 /* Pods_xyz_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA682AB4ABF42EA7B90510F6 /* Pods_xyz_iosTests.framework */; };
+		A2231C3E1DEB7882007343EC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
+		A2231C3F1DEB7883007343EC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
+		A2231C401DEB7888007343EC /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
+		A2231C411DEB7889007343EC /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
+		A2231C421DEB788B007343EC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A286437C1DE274AE00A67CDF /* Player.swift */; };
+		A2231C431DEB788C007343EC /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A286437C1DE274AE00A67CDF /* Player.swift */; };
+		A2231C441DEB7892007343EC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A3F1DEB51BD00B1E0DC /* Server.swift */; };
+		A2231C451DEB7893007343EC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A3F1DEB51BD00B1E0DC /* Server.swift */; };
+		A2231C461DEB7896007343EC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A411DEB520000B1E0DC /* Utility.swift */; };
+		A2231C471DEB7897007343EC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A411DEB520000B1E0DC /* Utility.swift */; };
+		A2231C481DEB789F007343EC /* SpaceViewDotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */; };
+		A2231C491DEB789F007343EC /* SpaceViewDotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */; };
+		A2231C4A1DEB78A4007343EC /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
+		A2231C4B1DEB78A5007343EC /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
+		A2231C4C1DEB78A9007343EC /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
+		A2231C4D1DEB78A9007343EC /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
+		A2231C4E1DEB78AD007343EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B31DADC6E800C2F4C4 /* Main.storyboard */; };
+		A2231C4F1DEB78B3007343EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B31DADC6E800C2F4C4 /* Main.storyboard */; };
+		A2231C511DEB78C0007343EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */; };
+		A2231C521DEB78C3007343EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */; };
+		A2231C531DEB78C7007343EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */; };
+		A2231C541DEB78C7007343EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */; };
 		A28643371DE23AF100A67CDF /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
 		A28643391DE23C1800A67CDF /* SpaceViewDotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */; };
 		A286437D1DE274AE00A67CDF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A286437C1DE274AE00A67CDF /* Player.swift */; };
@@ -32,6 +54,8 @@
 		A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
 		A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
 		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
+		A2D25A401DEB51BD00B1E0DC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A3F1DEB51BD00B1E0DC /* Server.swift */; };
+		A2D25A421DEB520000B1E0DC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A411DEB520000B1E0DC /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +103,8 @@
 		A28C4BF91DD2CE4B00E5B338 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A28C4BFB1DD2CE8100E5B338 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
 		A2BC64591DC9929C006FA81C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A2D25A3F1DEB51BD00B1E0DC /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		A2D25A411DEB520000B1E0DC /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		A35FC31E16846CAD4A6D66EF /* Pods_xyz_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xyz_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92020422C79A8F6167C7B74 /* Pods-xyz-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-iosTests/Pods-xyz-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		D39CB7CBB0218B7CA8EDED41 /* Pods-xyz-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-iosTests/Pods-xyz-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,8 +188,8 @@
 				A28643361DE23AF100A67CDF /* LandingTableViewController.swift */,
 				A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */,
 				A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */,
-				A2BB28531DDADA72002500EF /* Classes */,
 				A2893ECE1DEA787C00982ABA /* Constants.swift */,
+				A2BB28531DDADA72002500EF /* Classes */,
 			);
 			path = "xyz-ios";
 			sourceTree = "<group>";
@@ -194,6 +220,8 @@
 				A286437C1DE274AE00A67CDF /* Player.swift */,
 				A2893EC61DEA433700982ABA /* SpacesSingleton.swift */,
 				A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */,
+				A2D25A3F1DEB51BD00B1E0DC /* Server.swift */,
+				A2D25A411DEB520000B1E0DC /* Utility.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -338,6 +366,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2231C511DEB78C0007343EC /* Assets.xcassets in Resources */,
+				A2231C4E1DEB78AD007343EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +375,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2231C521DEB78C3007343EC /* Assets.xcassets in Resources */,
+				A2231C4F1DEB78B3007343EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,9 +531,11 @@
 				A286437D1DE274AE00A67CDF /* Player.swift in Sources */,
 				A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */,
 				A2893ECF1DEA787C00982ABA /* Constants.swift in Sources */,
+				A2D25A421DEB520000B1E0DC /* Utility.swift in Sources */,
 				A2893ECB1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
 				A2893EC71DEA433700982ABA /* SpacesSingleton.swift in Sources */,
+				A2D25A401DEB51BD00B1E0DC /* Server.swift in Sources */,
 				A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,9 +544,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2231C3E1DEB7882007343EC /* Item.swift in Sources */,
 				A2893EC81DEA433700982ABA /* SpacesSingleton.swift in Sources */,
+				A2231C461DEB7896007343EC /* Utility.swift in Sources */,
+				A2231C401DEB7888007343EC /* Space.swift in Sources */,
+				A2231C4A1DEB78A4007343EC /* SpaceViewController.swift in Sources */,
 				A287A3C51DADC6E800C2F4C4 /* xyz_iosTests.swift in Sources */,
+				A2231C421DEB788B007343EC /* Player.swift in Sources */,
+				A2231C481DEB789F007343EC /* SpaceViewDotScene.swift in Sources */,
+				A2231C531DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECC1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2231C441DEB7892007343EC /* Server.swift in Sources */,
+				A2231C4C1DEB78A9007343EC /* LandingTableViewController.swift in Sources */,
 				A2893ED01DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,9 +564,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2231C3F1DEB7883007343EC /* Item.swift in Sources */,
 				A2893EC91DEA433800982ABA /* SpacesSingleton.swift in Sources */,
+				A2231C471DEB7897007343EC /* Utility.swift in Sources */,
+				A2231C411DEB7889007343EC /* Space.swift in Sources */,
+				A2231C4B1DEB78A5007343EC /* SpaceViewController.swift in Sources */,
 				A287A3D01DADC6E900C2F4C4 /* xyz_iosUITests.swift in Sources */,
+				A2231C431DEB788C007343EC /* Player.swift in Sources */,
+				A2231C491DEB789F007343EC /* SpaceViewDotScene.swift in Sources */,
+				A2231C541DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECD1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2231C451DEB7893007343EC /* Server.swift in Sources */,
+				A2231C4D1DEB78A9007343EC /* LandingTableViewController.swift in Sources */,
 				A2893ED11DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

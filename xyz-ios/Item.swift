@@ -30,12 +30,25 @@ class Item: SKSpriteNode {
         self.x = position.0
         self.y = position.1
         let texture = SKTexture(imageNamed: "xyz-square")
-        super.init(texture: texture, color: UIColor(), size: texture.size())
+        super.init(texture: texture, color: UIColor(), size: CGSize(width:40, height: 40))
         
-        self.position = CGPoint(x:self.x, y: Constants.SPACE_DIMENSIONS.height - self.y)
+        self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
         
         print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
+    }
+    
+    convenience init(fromJson: [String: AnyObject]){
+        var rawItem = fromJson
+        let initParams: [String: String] =
+            ["title": rawItem["title"] as! String,
+             "provider": rawItem["provider"] as! String,
+             "provider_id": rawItem["provider_id"] as! String,
+             "id": rawItem["id"] as! String]
+        let point = (rawItem["x"] as! Int, rawItem["y"] as! Int)
+        
+        self.init(params: initParams, position: point)
+
     }
     
     
