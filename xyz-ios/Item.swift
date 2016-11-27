@@ -12,8 +12,8 @@ class Item: SKSpriteNode {
     //    var id: String
     var id : String
     var title: String
-    var x: Int
-    var y: Int
+    var x: Int // using same coord system as xyz.gs
+    var y: Int // using same coord system as xyz.gs
     //    var artist: String
     var provider: String
     var provider_id: String
@@ -32,7 +32,7 @@ class Item: SKSpriteNode {
         let texture = SKTexture(imageNamed: "xyz-square")
         super.init(texture: texture, color: UIColor(), size: texture.size())
         
-        self.position = CGPoint(x:position.0, y: position.1)
+        self.position = CGPoint(x:self.x, y: Constants.SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
         
         print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")

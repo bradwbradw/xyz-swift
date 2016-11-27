@@ -26,6 +26,9 @@
 		A2893ECB1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */; };
 		A2893ECC1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */; };
 		A2893ECD1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */; };
+		A2893ECF1DEA787C00982ABA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECE1DEA787C00982ABA /* Constants.swift */; };
+		A2893ED01DEA787C00982ABA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECE1DEA787C00982ABA /* Constants.swift */; };
+		A2893ED11DEA787C00982ABA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2893ECE1DEA787C00982ABA /* Constants.swift */; };
 		A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
 		A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF91DD2CE4B00E5B338 /* Item.swift */; };
 		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
@@ -71,6 +74,7 @@
 		A287A3D11DADC6E900C2F4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2893EC61DEA433700982ABA /* SpacesSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacesSingleton.swift; sourceTree = "<group>"; };
 		A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylisterSingleton.swift; sourceTree = "<group>"; };
+		A2893ECE1DEA787C00982ABA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
 		A28C4BF91DD2CE4B00E5B338 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		A28C4BFB1DD2CE8100E5B338 /* Space.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */,
 				A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */,
 				A2BB28531DDADA72002500EF /* Classes */,
+				A2893ECE1DEA787C00982ABA /* Constants.swift */,
 			);
 			path = "xyz-ios";
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				A28643391DE23C1800A67CDF /* SpaceViewDotScene.swift in Sources */,
 				A286437D1DE274AE00A67CDF /* Player.swift in Sources */,
 				A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */,
+				A2893ECF1DEA787C00982ABA /* Constants.swift in Sources */,
 				A2893ECB1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
 				A2893EC71DEA433700982ABA /* SpacesSingleton.swift in Sources */,
@@ -507,6 +513,7 @@
 				A2893EC81DEA433700982ABA /* SpacesSingleton.swift in Sources */,
 				A287A3C51DADC6E800C2F4C4 /* xyz_iosTests.swift in Sources */,
 				A2893ECC1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2893ED01DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +524,7 @@
 				A2893EC91DEA433800982ABA /* SpacesSingleton.swift in Sources */,
 				A287A3D01DADC6E900C2F4C4 /* xyz_iosUITests.swift in Sources */,
 				A2893ECD1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2893ED11DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

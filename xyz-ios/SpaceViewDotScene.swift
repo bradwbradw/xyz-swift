@@ -12,14 +12,16 @@ class SpaceViewDotScene: SKScene {
     
     var space:Space
     var items:[Item]
+    let Playlister = PlaylisterSingleton.sharedInstance
     
-    let background = SKSpriteNode(color: .orange, size: CGSize.zero)
+    let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
-    init(size:CGSize, scaleMode:SKSceneScaleMode, space:Space) {
+    init(space:Space) {
         
         self.space = space
         self.items = space["items"] as [Item]!;
-        super.init(size:size)
+        super.init(size:CGSize(width: Constants.SPACE_DIMENSIONS.width,
+                               height: Constants.SPACE_DIMENSIONS.height))
         print("init scene with size...")
         print(size)
      
@@ -42,12 +44,12 @@ class SpaceViewDotScene: SKScene {
 //        camera.name = "camera"
 //        scrollingWorldNode.addChild(camera)
 //        
-//        self.scaleMode = scaleMode
+//
 //        
         for item in items {
             self.addChild(item)
         }
-        
+        self.scaleMode = SKSceneScaleMode.fill
         
         let cameraNode = SKCameraNode()
         cameraNode.position = CGPoint(x: scene!.size.width / 2, y:scene!.size.height / 2)
@@ -64,6 +66,7 @@ class SpaceViewDotScene: SKScene {
 //        cameraNode.run(zoomInAction)
 //        
         self.addChild(helloNode)
+        self.addChild(generatePlaylistShapeNode())
     }
     
     func keepInsideBoundaries(point: CGPoint) -> CGPoint{
@@ -120,6 +123,15 @@ class SpaceViewDotScene: SKScene {
 //        print(node.parent?.position as Any)
 //    }
     
+    
+    func generatePlaylistShapeNode() -> SKShapeNode{
+        let playlist = Playlister.get(forSpace: self.space)!.entries
+        let pointer: UnsafeMutablePointer<CGPoint> = UnsafeMutablePointer(mutating: Playlister.getPoints(forSpace: self.space))
+        let shapeNode = SKShapeNode(points: pointer, count: (playlist?.count)!)
+        shapeNode.lineWidth = 2.0
+        shapeNode.strokeColor = .white
+        return shapeNode
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

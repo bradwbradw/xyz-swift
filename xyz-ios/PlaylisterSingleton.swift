@@ -47,6 +47,16 @@ class PlaylisterSingleton {
         }
     }
     
+    func getPoints(forSpace: Space) -> [CGPoint] {
+        let items = get(forSpace: forSpace)!.entries
+        var points:[CGPoint] = []
+        
+        for item in items!{
+            points.append(item.position)
+        }
+        return points
+    }
+    
     
     class Playlist {
         

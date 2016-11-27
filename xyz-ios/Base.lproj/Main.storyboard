@@ -66,7 +66,7 @@
                         <viewControllerLayoutGuide type="top" id="Wdj-Km-fxP"/>
                         <viewControllerLayoutGuide type="bottom" id="g0h-xX-Xw3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YGy-YP-Lnd" customClass="SKView">
+                    <view key="view" contentMode="center" id="YGy-YP-Lnd" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
