@@ -46,6 +46,8 @@ class SpaceViewDotScene: SKScene {
 //        
 //
 //        
+        
+        self.addChild(generatePlaylistShapeNode())
         for item in items {
             self.addChild(item)
         }
@@ -66,7 +68,6 @@ class SpaceViewDotScene: SKScene {
 //        cameraNode.run(zoomInAction)
 //        
         self.addChild(helloNode)
-        self.addChild(generatePlaylistShapeNode())
     }
     
     func keepInsideBoundaries(point: CGPoint) -> CGPoint{
