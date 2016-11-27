@@ -31,10 +31,10 @@ class Space {
             }
         }
         
-        Playlister.upsertFrom(space: self)
+        Playlister.upsert(fromSpace: self)
         
         print("initialized Space with name \(self.name). playlist is...")
-        Playlister.map[self.id]?.describe()
+        Playlister.get(forSpace:self)!.describe()
         
     }
     

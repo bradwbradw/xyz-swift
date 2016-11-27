@@ -28,14 +28,23 @@ class PlaylisterSingleton {
         print("creating Playlister singleton")
     }
     
-    func upsertFrom(space: Space){
-        upsert(id: space.id, playlist: Playlist(space: space))
+    func upsert(fromSpace: Space){
+        upsert(id: fromSpace.id, playlist: Playlist(space: fromSpace))
     }
     
     func upsert(id: String, playlist: Playlist){
         self.map[id] = playlist
         print("upserted playlist for space \(id). Now map looks like...")
         print(map)
+    }
+    
+    func get(forSpace: Space) -> Playlist?{
+        if let playlist = self.map[forSpace.id]{
+            return playlist
+        } else {
+            print("playlist not found for space \(forSpace)")
+            return nil
+        }
     }
     
     
