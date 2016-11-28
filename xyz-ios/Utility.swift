@@ -6,6 +6,7 @@
 //  Copyright © 2016 Bradley Winter. All rights reserved.
 //
 
+import SpriteKit
 import Foundation
 
 class Utility {
@@ -20,6 +21,14 @@ class Utility {
             return nil
         }
     }
+    
+    class func centerOf(node:SKNode) -> CGPoint {
+        let centerX = node.frame.size.width/2
+        let centerY = node.frame.size.height/2
+        print("center is x:\(centerX), y: \(centerY)")
+        return CGPoint(x: centerX, y: centerY)
+    }
+
     
 
 }

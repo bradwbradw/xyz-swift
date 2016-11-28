@@ -18,6 +18,8 @@ class Item: SKShapeNode {
     var provider: String
     var provider_id: String
     
+    let DOT_RADIUS = 12
+    
     var dateSaved: Date?
     
     var elementToActivateWhenSelected: ItemDetailView?
@@ -34,11 +36,10 @@ class Item: SKShapeNode {
 //        let texture = SKTexture(imageNamed: "xyz-square")
         
         super.init()
-        self.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:30, height:30)).cgPath
+        self.path = UIBezierPath(ovalIn: CGRect(x:-DOT_RADIUS, y:-DOT_RADIUS, width:2*DOT_RADIUS, height:2*DOT_RADIUS)).cgPath
         self.fillColor = UIColor.white
-        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
-        self.lineWidth = 5
-        
+//        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
+//        self.lineWidth = 5
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
         

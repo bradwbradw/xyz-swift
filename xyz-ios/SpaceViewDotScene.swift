@@ -19,7 +19,6 @@ class ItemDetailView: SKNode{
     
     override init(){
         
-        
         itemName = SKLabelNode(fontNamed: "Helvetica")
         playButton = SKLabelNode(fontNamed: "Helvetica")
         background = SKSpriteNode()
@@ -41,18 +40,11 @@ class ItemDetailView: SKNode{
         
     }
     
-    func centerOf(node:SKNode) -> CGPoint {
-        let centerX = node.frame.size.width/2
-        let centerY = node.frame.size.height/2
-        print("center is x:\(centerX), y: \(centerY)")
-        return CGPoint(x: centerX, y: centerY)
-    }
-    
     func updateBackground(){
         background.size.height = playButton.frame.size.height*2 + itemName.frame.size.height
         background.size.width = itemName.frame.size.width
-        background.anchorPoint = centerOf(node: background)
-        background.position = centerOf(node: playButton)
+        background.anchorPoint = Utility.centerOf(node: background)
+        background.position = Utility.centerOf(node: playButton)
     }
     func update(withItem: Item){
         
