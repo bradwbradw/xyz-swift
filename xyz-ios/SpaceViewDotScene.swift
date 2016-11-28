@@ -21,8 +21,7 @@ class ItemDetailView: SKNode{
         
         itemName = SKLabelNode(fontNamed: "Helvetica")
         playButton = SKLabelNode(fontNamed: "Helvetica")
-        background = SKSpriteNode()
-        background.color = UIColor.red
+        background = SKSpriteNode(texture: nil, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6012577571), size: CGSize(width:60, height:20))
         itemName.text = "XYZ ITEM\n /n "
         itemName.fontColor = #colorLiteral(red: 1, green: 0.4410438538, blue: 0.9856794477, alpha: 1)
         itemName.fontSize = 15
@@ -32,19 +31,18 @@ class ItemDetailView: SKNode{
 
         super.init()
         
+        self.addChild(background)
         self.addChild(itemName)
         self.addChild(playButton)
-        self.addChild(background)
         
         self.isUserInteractionEnabled = true
         
     }
     
     func updateBackground(){
-        background.size.height = playButton.frame.size.height*2 + itemName.frame.size.height
+        background.size.height = playButton.frame.size.height + itemName.frame.size.height
         background.size.width = itemName.frame.size.width
-        background.anchorPoint = Utility.centerOf(node: background)
-        background.position = Utility.centerOf(node: playButton)
+        background.position = CGPoint(x:0,y:0)
     }
     func update(withItem: Item){
         
