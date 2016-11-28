@@ -53,7 +53,7 @@ class ItemDetailView: SKNode{
         item = withItem
         
         self.position = item!.position
-        self.position.y =  self.position.y + 30
+        self.position.y =  self.position.y + 60
         
         self.isHidden = false
         self.itemName.text = item!.title

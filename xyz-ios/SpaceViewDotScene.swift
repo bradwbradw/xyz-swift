@@ -16,6 +16,9 @@ class SpaceViewDotScene: SKScene {
     var itemDetailView: ItemDetailView
     var haloNode: SKShapeNode
     
+    let regularDotPath: CGPath
+    let selectedDotPath: CGPath
+    
     let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
     init(space activeSpace:Space, player:Player) {
@@ -24,8 +27,11 @@ class SpaceViewDotScene: SKScene {
         
         space = activeSpace
         items = space["items"] as [Item]!;
+        
+        regularDotPath = UIBezierPath(ovalIn: CGRect(x:-DOT_ATTRIBUTES.radius, y:-DOT_ATTRIBUTES.radius, width:2*DOT_ATTRIBUTES.radius, height:2*DOT_ATTRIBUTES.radius)).cgPath
+        selectedDotPath = UIBezierPath(ovalIn: CGRect(x:-DOT_ATTRIBUTES.radiusBig, y:-DOT_ATTRIBUTES.radiusBig, width:2*DOT_ATTRIBUTES.radiusBig, height:2*DOT_ATTRIBUTES.radiusBig)).cgPath
         haloNode = SKShapeNode()
-        haloNode.path = UIBezierPath(ovalIn: CGRect(x:-DOT_ATTRIBUTES.radius, y:-DOT_ATTRIBUTES.radius, width:2*DOT_ATTRIBUTES.radius, height:2*DOT_ATTRIBUTES.radius)).cgPath
+        haloNode.path = regularDotPath
         haloNode.glowWidth = 15
         haloNode.strokeColor = UIColor.white
         haloNode.isHidden=true
@@ -163,30 +169,36 @@ class SpaceViewDotScene: SKScene {
     func updatePlayingHalo(newPlayingItem: Item){
         haloNode.isHidden = false
         haloNode.position = newPlayingItem.position
+        if(newPlayingItem.state.selected[1]){
+            haloNode.path = selectedDotPath
+        } else {
+            haloNode.path = regularDotPath
+        }
+    }
+    
+    
+    func changed(state: String, for item: Item ) -> Bool {
+        return item.state[state][0]  != item.state[state][1]
+    }
+    
+    func applySelectedStyle(to item: Item){
+        item.path = selectedDotPath
+        if(item.state.playing[1]){
+            updatePlayingHalo(newPlayingItem: item)
+        }
+    }
+    
+    func removeSelectedStyle(to item: Item){
+        item.path = regularDotPath
+        
+        if(item.state.playing[1]){
+            updatePlayingHalo(newPlayingItem: item)
+        }
+        
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        
-        func changed(state: String, for item: Item ) -> Bool {
-            return item.state[state][0]  != item.state[state][1]
-        }
-        
-        func applyPlayingStyle(to item: Item){
-            
-        }
-        func removePlayingStyle(to item: Item){
-//            haloNode.isHidden = true
-        }
-        
-        func applySelectedStyle(to item: Item){
-            item.strokeColor = UIColor.white
-            item.lineWidth = 5
-        }
-        func removeSelectedStyle(to item: Item){
-            
-            item.lineWidth = 0
-        }
         
         for item in items {
             

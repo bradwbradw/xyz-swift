@@ -18,6 +18,7 @@ struct SPACE_DIMENSIONS {
 
 struct  DOT_ATTRIBUTES{
     static let radius = 12
+    static let radiusBig = 18
 }
 
 
