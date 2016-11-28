@@ -33,7 +33,12 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("did load spaces")
         print(Spaces.asArray())
         tableView.isHidden = false
-        tableView.reloadData()
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {

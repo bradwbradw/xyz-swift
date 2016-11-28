@@ -54,6 +54,9 @@
 		A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BFB1DD2CE8100E5B338 /* Space.swift */; };
 		A2D25A401DEB51BD00B1E0DC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A3F1DEB51BD00B1E0DC /* Server.swift */; };
 		A2D25A421DEB520000B1E0DC /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D25A411DEB520000B1E0DC /* Utility.swift */; };
+		A2DCCA141DEC9FA8009DC237 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DCCA131DEC9FA8009DC237 /* ItemDetailView.swift */; };
+		A2DCCA151DEC9FA8009DC237 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DCCA131DEC9FA8009DC237 /* ItemDetailView.swift */; };
+		A2DCCA161DEC9FA8009DC237 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DCCA131DEC9FA8009DC237 /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +106,7 @@
 		A2BC64591DC9929C006FA81C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A2D25A3F1DEB51BD00B1E0DC /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		A2D25A411DEB520000B1E0DC /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		A2DCCA131DEC9FA8009DC237 /* ItemDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		A35FC31E16846CAD4A6D66EF /* Pods_xyz_iosUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xyz_iosUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92020422C79A8F6167C7B74 /* Pods-xyz-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-iosTests/Pods-xyz-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 		D39CB7CBB0218B7CA8EDED41 /* Pods-xyz-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-iosTests/Pods-xyz-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				A2893ECA1DEA4B9800982ABA /* PlaylisterSingleton.swift */,
 				A2D25A3F1DEB51BD00B1E0DC /* Server.swift */,
 				A2D25A411DEB520000B1E0DC /* Utility.swift */,
+				A2DCCA131DEC9FA8009DC237 /* ItemDetailView.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
 				A2893EC71DEA433700982ABA /* SpacesSingleton.swift in Sources */,
 				A2D25A401DEB51BD00B1E0DC /* Server.swift in Sources */,
+				A2DCCA141DEC9FA8009DC237 /* ItemDetailView.swift in Sources */,
 				A2231C561DEB889E007343EC /* LandingViewController.swift in Sources */,
 				A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */,
 			);
@@ -552,6 +558,7 @@
 				A2231C481DEB789F007343EC /* SpaceViewDotScene.swift in Sources */,
 				A2231C531DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECC1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2DCCA151DEC9FA8009DC237 /* ItemDetailView.swift in Sources */,
 				A2231C441DEB7892007343EC /* Server.swift in Sources */,
 				A2893ED01DEA787C00982ABA /* Constants.swift in Sources */,
 			);
@@ -571,6 +578,7 @@
 				A2231C491DEB789F007343EC /* SpaceViewDotScene.swift in Sources */,
 				A2231C541DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECD1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
+				A2DCCA161DEC9FA8009DC237 /* ItemDetailView.swift in Sources */,
 				A2231C451DEB7893007343EC /* Server.swift in Sources */,
 				A2893ED11DEA787C00982ABA /* Constants.swift in Sources */,
 			);
