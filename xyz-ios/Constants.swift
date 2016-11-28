@@ -8,12 +8,17 @@
 
 import Foundation
 
-    
-    struct SPACE_DIMENSIONS {
-        static let minX = 0
-        static let minY = 0
-        static let width = 600
-        static let height = 600
-    }
+
+struct SPACE_DIMENSIONS {
+    static let minX = 0
+    static let minY = 0
+    static let width = 600
+    static let height = 600
+}
+
+struct  DOT_ATTRIBUTES{
+    static let radius = 12
+}
+
 
 

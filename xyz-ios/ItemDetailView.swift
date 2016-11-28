@@ -47,6 +47,7 @@ class ItemDetailView: SKNode{
         background.size.width = itemName.frame.size.width
         background.position = CGPoint(x:0,y:0)
     }
+    
     func update(withItem: Item){
         
         item = withItem

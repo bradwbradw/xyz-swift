@@ -39,7 +39,6 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         
         space = Spaces.viewing!
 
-        player.playingSpace = space
         ytPlayer.delegate = self
         
         self.scene = SpaceViewDotScene(space: space!, player: player)

@@ -26,7 +26,7 @@ class Player: MediaMethods {
     var label: UILabel
     var youtubePlayerView: YTPlayerView?
     var soundcloudPlayerView: UIView?
-    var playingSpace: Space?
+    let Spaces = SpacesSingleton.sharedInstance
     
     let youtubePlayerVars = [ "rel" : 0,
                               "playsinline" : 1]
@@ -46,7 +46,7 @@ class Player: MediaMethods {
         print("song done. now playing was...")
         print(finishedItem)
         
-        let playlist = Playlister.get(forSpace: self.playingSpace!)!.entries!
+        let playlist = Playlister.get(forSpace: Spaces.playing!)!.entries!
         
         if let i = playlist.index(of:finishedItem){
             
@@ -83,6 +83,11 @@ class Player: MediaMethods {
         
     }
     func play(item:Item){
+        
+        Spaces.playing = item.parentSpace!
+    
+        Spaces.playing!.unsetAllPlaying()
+        item.setPlaying()
         
         print("PLAY: \(item.provider) id \(item.provider_id) ")
         self.label.text = item.provider+" "+item.provider_id+" "+item.title

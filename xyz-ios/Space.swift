@@ -63,6 +63,12 @@ class Space {
             item.deselect()
         }
     }
+    
+    func unsetAllPlaying(){
+        for item in items!{
+            item.unsetPlaying()
+        }
+    }
 
     
     

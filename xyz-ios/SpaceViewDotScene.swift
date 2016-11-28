@@ -14,15 +14,22 @@ class SpaceViewDotScene: SKScene {
     var items:[Item]
     let Playlister = PlaylisterSingleton.sharedInstance
     var itemDetailView: ItemDetailView
+    var haloNode: SKShapeNode
     
     let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
-    init(space:Space, player:Player) {
+    init(space activeSpace:Space, player:Player) {
         
         itemDetailView = ItemDetailView()
         
-        self.space = space
-        self.items = space["items"] as [Item]!;
+        space = activeSpace
+        items = space["items"] as [Item]!;
+        haloNode = SKShapeNode()
+        haloNode.path = UIBezierPath(ovalIn: CGRect(x:-DOT_ATTRIBUTES.radius, y:-DOT_ATTRIBUTES.radius, width:2*DOT_ATTRIBUTES.radius, height:2*DOT_ATTRIBUTES.radius)).cgPath
+        haloNode.glowWidth = 15
+        haloNode.strokeColor = UIColor.white
+        haloNode.isHidden=true
+        
         super.init(size:CGSize(width: SPACE_DIMENSIONS.width,
                                height: SPACE_DIMENSIONS.height))
         print("init scene with size...")
@@ -33,6 +40,7 @@ class SpaceViewDotScene: SKScene {
         self.background.size = size
         // 2
         self.addChild(background)
+        self.addChild(haloNode)
 //      // FOR iOS version < 9 ( does not support SKCameraNode() )
 //        self.anchorPoint = CGPoint(x:0.5,y:0.5);
 //        let anchorLabel = SKLabelNode(fontNamed: "Arial")
@@ -152,6 +160,12 @@ class SpaceViewDotScene: SKScene {
         return shapeNode
     }
     
+    func updatePlayingHalo(newPlayingItem: Item){
+        haloNode.isHidden = false
+        haloNode.position = newPlayingItem.position
+    }
+    
+    
     override func update(_ currentTime: TimeInterval) {
         
         func changed(state: String, for item: Item ) -> Bool {
@@ -159,29 +173,29 @@ class SpaceViewDotScene: SKScene {
         }
         
         func applyPlayingStyle(to item: Item){
-            item.strokeColor = UIColor.blue
-            item.lineWidth = 5
+            
         }
         func removePlayingStyle(to item: Item){
-            item.lineWidth = 0
+//            haloNode.isHidden = true
         }
         
         func applySelectedStyle(to item: Item){
-            item.strokeColor = UIColor.yellow
+            item.strokeColor = UIColor.white
             item.lineWidth = 5
         }
         func removeSelectedStyle(to item: Item){
+            
             item.lineWidth = 0
         }
         
         for item in items {
+            
             if item.state.playing[1] && changed(state: "playing", for: item){
-                applyPlayingStyle(to:item)
+                updatePlayingHalo(newPlayingItem: item)
                 item.state.playing[0] = true
             }
             
             if !item.state.playing[1] && changed(state: "playing",for: item){
-                removePlayingStyle(to:item)
                 item.state.playing[0] = false
             }
             

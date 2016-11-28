@@ -42,25 +42,20 @@ class Item: SKShapeNode, ServerSignals {
     
     var id : String
     var title: String
+    //    var artist: String
     var x: Int // using same coord system as xyz.gs
     var y: Int // using same coord system as xyz.gs
     var imageUrl: String
-    //    var artist: String
     var provider: String
     var provider_id: String
     var parentSpace: Space?
     var state = itemState( playing: [false, false], selected: [false, false])
     
-    
-    let DOT_RADIUS = 12
-    
     var dateSaved: Date?
     
     let server = Server()
-    
-    var detailView: ItemDetailView? // one view, common to all items
-    
     var delegate: ServerSignals?
+    var detailView: ItemDetailView? // one view, common to all items
     
     init(params: [String: String], position: (Int, Int), space: Space){
         self.title = params["title"]!
@@ -74,14 +69,13 @@ class Item: SKShapeNode, ServerSignals {
 //        let texture = SKTexture(imageNamed: "xyz-square")
         
         super.init()
-        self.path = UIBezierPath(ovalIn: CGRect(x:-DOT_RADIUS, y:-DOT_RADIUS, width:2*DOT_RADIUS, height:2*DOT_RADIUS)).cgPath
+        self.path = UIBezierPath(ovalIn: CGRect(x:-DOT_ATTRIBUTES.radius, y:-DOT_ATTRIBUTES.radius, width:2*DOT_ATTRIBUTES.radius, height:2*DOT_ATTRIBUTES.radius)).cgPath
         self.fillColor = UIColor.white
 //        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
         self.lineWidth = 0
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.zPosition = 1
         self.isUserInteractionEnabled = true
-        
         server.delegate = self
         server.loadImage(url: self.imageUrl)
 //        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
@@ -108,15 +102,21 @@ class Item: SKShapeNode, ServerSignals {
         }
     }
     func select(){
-        parentSpace!.deselectAllItems()
         self.state.selected[1] = true
         detailView!.update(withItem: self)
     }
     func deselect(){
         self.state.selected[1] = false
     }
+    func setPlaying(){
+        self.state.playing[1] = true
+    }
+    func unsetPlaying(){
+        self.state.playing[1] = false
+    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        parentSpace!.deselectAllItems()
         select()
     }
     
