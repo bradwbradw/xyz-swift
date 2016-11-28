@@ -47,7 +47,9 @@ class Item: SKShapeNode, ServerSignals {
 //        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
 //        self.lineWidth = 5
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
+        self.zPosition = 1
         self.isUserInteractionEnabled = true
+
         
         
         self.addChild(imageSprite)

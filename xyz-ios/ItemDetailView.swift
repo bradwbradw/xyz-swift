@@ -33,6 +33,7 @@ class ItemDetailView: SKNode{
         
         super.init()
         
+        self.zPosition = 2
         self.addChild(background)
         self.addChild(itemName)
         self.addChild(playButton)
