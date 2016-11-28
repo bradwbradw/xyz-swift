@@ -28,6 +28,12 @@ class Utility {
         print("center is x:\(centerX), y: \(centerY)")
         return CGPoint(x: centerX, y: centerY)
     }
+    
+    class func broadcast(notification: String){
+        
+        NotificationCenter.default.post(name: Notification.Name(notification),
+                                        object: nil)
+    }
 
     
 

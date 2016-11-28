@@ -8,6 +8,36 @@
 
 import SpriteKit
 
+struct itemState {
+
+    var playing: [Bool] = [false, false] // index 0 is last frame state, 1 is current frame state
+    var selected: [Bool] = [false, false]
+    
+    
+    subscript(prop: String) -> [Bool] {
+        get {
+            if(prop == "playing")  {
+             return self.playing
+            }
+            if(prop == "selected")  {
+             return self.selected
+            }
+            return [false, false]
+        }
+        set {
+            if(prop == "playing")  {
+                self.playing = newValue
+            }
+            if(prop == "selected")  {
+                self.selected = newValue
+            }
+            
+        }
+        
+    }
+    
+    
+}
 class Item: SKShapeNode, ServerSignals {
     
     var id : String
@@ -18,19 +48,21 @@ class Item: SKShapeNode, ServerSignals {
     //    var artist: String
     var provider: String
     var provider_id: String
+    var parentSpace: Space?
+    var state = itemState( playing: [false, false], selected: [false, false])
     
-    var imageSprite: SKSpriteNode
+    
     let DOT_RADIUS = 12
     
     var dateSaved: Date?
     
     let server = Server()
     
-    var elementToActivateWhenSelected: ItemDetailView?
+    var detailView: ItemDetailView? // one view, common to all items
     
     var delegate: ServerSignals?
     
-    init(params: [String: String], position: (Int, Int)){
+    init(params: [String: String], position: (Int, Int), space: Space){
         self.title = params["title"]!
         self.provider = params["provider"]!
         self.provider_id = params["provider_id"]!
@@ -38,28 +70,24 @@ class Item: SKShapeNode, ServerSignals {
         self.imageUrl = params["pic"]!
         self.x = position.0
         self.y = position.1
+        self.parentSpace = space
 //        let texture = SKTexture(imageNamed: "xyz-square")
         
-        imageSprite = SKSpriteNode(texture: nil, color:#colorLiteral(red: 1, green: 0.4410438538, blue: 0.9856794477, alpha: 1) ,size: CGSize(width:40, height:40))
         super.init()
         self.path = UIBezierPath(ovalIn: CGRect(x:-DOT_RADIUS, y:-DOT_RADIUS, width:2*DOT_RADIUS, height:2*DOT_RADIUS)).cgPath
         self.fillColor = UIColor.white
 //        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
-//        self.lineWidth = 5
+        self.lineWidth = 0
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.zPosition = 1
         self.isUserInteractionEnabled = true
-
-        
-        
-        self.addChild(imageSprite)
         
         server.delegate = self
         server.loadImage(url: self.imageUrl)
 //        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
     }
     
-    convenience init(fromJson: [String: AnyObject]){
+    convenience init(fromJson: [String: AnyObject], space: Space){
         var rawItem = fromJson
         let initParams: [String: String] =
             ["title": rawItem["title"] as! String,
@@ -69,18 +97,27 @@ class Item: SKShapeNode, ServerSignals {
              "id": rawItem["id"] as! String]
         let point = (rawItem["x"] as! Int, rawItem["y"] as! Int)
         
-        self.init(params: initParams, position: point)
+        self.init(params: initParams, position: point, space: space)
 
     }
     
     func didLoad(image: UIImage?) {
         print("got the signal: \(self.title)")
         if let img = image{
-            imageSprite.texture = SKTexture(image:img)
+            self.fillTexture = SKTexture(image:img)
         }
     }
+    func select(){
+        parentSpace!.deselectAllItems()
+        self.state.selected[1] = true
+        detailView!.update(withItem: self)
+    }
+    func deselect(){
+        self.state.selected[1] = false
+    }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {        elementToActivateWhenSelected!.update(withItem: self)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        select()
     }
     
     func distanceTo(item: Item) -> CGFloat{

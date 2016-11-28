@@ -143,10 +143,13 @@ class PlaylisterSingleton {
             }
             
             // TODO check for if we can actually play it
-            var items = space.items
+            guard let items = space.items else {
+                print("space has no items property!")
+                return
+            }
             
             if (items.count == 0){
-                print("space has no songs!!")
+                print("space items property has count 0!")
                 return
             }
             
@@ -166,7 +169,7 @@ class PlaylisterSingleton {
             }
             
             if ( items.count > 1) {
-                sortByNearest(items: space.items, seed: seed!)
+                sortByNearest(items: items, seed: seed!)
             }
             print("done recomputing playlist for space \(space.name)")
             

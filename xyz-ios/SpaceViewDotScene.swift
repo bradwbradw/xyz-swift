@@ -53,10 +53,10 @@ class SpaceViewDotScene: SKScene {
         self.addChild(generatePlaylistShapeNode())
         
         itemDetailView.delegate = player
-        itemDetailView.position = CGPoint(x: 0, y: 0)
+        itemDetailView.isHidden = true
         
         for item in items {
-            item.elementToActivateWhenSelected = itemDetailView
+            item.detailView = itemDetailView
             self.addChild(item)
         }
         self.addChild(itemDetailView)
@@ -118,6 +118,7 @@ class SpaceViewDotScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        space.deselectAllItems()
         itemDetailView.isHidden = true
         print("touching view")
     }
@@ -146,9 +147,54 @@ class SpaceViewDotScene: SKScene {
         let playlist = Playlister.get(forSpace: self.space)!.entries
         let pointer: UnsafeMutablePointer<CGPoint> = UnsafeMutablePointer(mutating: Playlister.getPoints(forSpace: self.space))
         let shapeNode = SKShapeNode(points: pointer, count: (playlist?.count)!)
-        shapeNode.lineWidth = 2.0
+        shapeNode.lineWidth = 0.25
         shapeNode.strokeColor = .white
         return shapeNode
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        func changed(state: String, for item: Item ) -> Bool {
+            return item.state[state][0]  != item.state[state][1]
+        }
+        
+        func applyPlayingStyle(to item: Item){
+            item.strokeColor = UIColor.blue
+            item.lineWidth = 5
+        }
+        func removePlayingStyle(to item: Item){
+            item.lineWidth = 0
+        }
+        
+        func applySelectedStyle(to item: Item){
+            item.strokeColor = UIColor.yellow
+            item.lineWidth = 5
+        }
+        func removeSelectedStyle(to item: Item){
+            item.lineWidth = 0
+        }
+        
+        for item in items {
+            if item.state.playing[1] && changed(state: "playing", for: item){
+                applyPlayingStyle(to:item)
+                item.state.playing[0] = true
+            }
+            
+            if !item.state.playing[1] && changed(state: "playing",for: item){
+                removePlayingStyle(to:item)
+                item.state.playing[0] = false
+            }
+            
+            if item.state.selected[1] && changed(state: "selected",for: item ){
+                applySelectedStyle(to:item)
+                item.state.selected[0] = true
+            }
+            
+            if !item.state.selected[1] && changed(state: "selected", for: item ){
+                removeSelectedStyle(to:item)
+                item.state.selected[0] = false
+            }
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
