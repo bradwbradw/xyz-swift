@@ -56,14 +56,6 @@ class Space {
     }
 
     
-    func attachItemDelegatesTo(player: Player){
-        
-        for item in self.items {
-            item.delegate = player
-        }
-        
-    }
-    
     
     subscript(name: String) -> String {
         

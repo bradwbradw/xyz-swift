@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-protocol ServerSignals: UITableViewDelegate {
-    func didLoadSpaces()
+protocol ServerSignals {
+    func didLoad(image: UIImage?)
 }
 class Server {
     
@@ -22,12 +22,12 @@ class Server {
         let defaultFilter: [String:Any] =
             ["where":
                 ["public":true],
-                 "include": ["songs"]
-            ]
+             "include": ["songs"]
+        ]
         
         let filterJsonString = Utility.objToJsonString(obj:defaultFilter)!
         let filterJsonStringUrlEncoded = filterJsonString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-
+        
         let urlObj: URL = URL(string: "https://xyz.gs/api/spaces?filter=\(filterJsonStringUrlEncoded)")!
         let urlRequest: URLRequest = URLRequest(url: urlObj)
         print("downloaded xyz spaces from \(urlObj.absoluteString)");
@@ -58,6 +58,39 @@ class Server {
             }
         }
         task.resume()
+    }
+    
+    func loadImage(url: String){
+        
+        print("will load image for item at url \(url)")
+        
+        let urlObj: URL = URL(string: url)!
+        let urlRequest: URLRequest = URLRequest(url: urlObj)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest as URLRequest) {
+            (data, response, error) -> Void in
+            
+            if
+                let httpResponse = response as? HTTPURLResponse,
+                httpResponse.statusCode == 200,
+                let data = data,
+                let image = UIImage(data: data),
+                error == nil
+            {
+                print("downloaded image from \(urlObj.absoluteString)");
+                self.delegate?.didLoad(image: image)
+                
+            }else {
+                print("could not load image...")
+                print(error ?? "no error")
+                print(response ?? "no http response")
+                self.delegate?.didLoad(image: nil)
+            }
+        }
+        task.resume()
+        
+        //self.delegate?.didLoad(image:nil)
+        
     }
     
     

@@ -8,33 +8,39 @@
 
 import SpriteKit
 
-class Item: SKShapeNode {
-    //    var id: String
+class Item: SKShapeNode, ServerSignals {
+    
     var id : String
     var title: String
     var x: Int // using same coord system as xyz.gs
     var y: Int // using same coord system as xyz.gs
+    var imageUrl: String
     //    var artist: String
     var provider: String
     var provider_id: String
     
+    var imageSprite: SKSpriteNode
     let DOT_RADIUS = 12
     
     var dateSaved: Date?
     
+    let server = Server()
+    
     var elementToActivateWhenSelected: ItemDetailView?
     
-    var delegate: MediaMethods?
+    var delegate: ServerSignals?
     
     init(params: [String: String], position: (Int, Int)){
         self.title = params["title"]!
         self.provider = params["provider"]!
         self.provider_id = params["provider_id"]!
         self.id = params["id"]!
+        self.imageUrl = params["pic"]!
         self.x = position.0
         self.y = position.1
 //        let texture = SKTexture(imageNamed: "xyz-square")
         
+        imageSprite = SKSpriteNode(texture: nil, color:#colorLiteral(red: 1, green: 0.4410438538, blue: 0.9856794477, alpha: 1) ,size: CGSize(width:40, height:40))
         super.init()
         self.path = UIBezierPath(ovalIn: CGRect(x:-DOT_RADIUS, y:-DOT_RADIUS, width:2*DOT_RADIUS, height:2*DOT_RADIUS)).cgPath
         self.fillColor = UIColor.white
@@ -43,6 +49,11 @@ class Item: SKShapeNode {
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
         
+        
+        self.addChild(imageSprite)
+        
+        server.delegate = self
+        server.loadImage(url: self.imageUrl)
 //        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
     }
     
@@ -52,6 +63,7 @@ class Item: SKShapeNode {
             ["title": rawItem["title"] as! String,
              "provider": rawItem["provider"] as! String,
              "provider_id": rawItem["provider_id"] as! String,
+             "pic": rawItem["pic"] as! String,
              "id": rawItem["id"] as! String]
         let point = (rawItem["x"] as! Int, rawItem["y"] as! Int)
         
@@ -59,9 +71,14 @@ class Item: SKShapeNode {
 
     }
     
+    func didLoad(image: UIImage?) {
+        print("got the signal: \(self.title)")
+        if let img = image{
+            imageSprite.texture = SKTexture(image:img)
+        }
+    }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        elementToActivateWhenSelected!.update(withItem: self)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {        elementToActivateWhenSelected!.update(withItem: self)
     }
     
     func distanceTo(item: Item) -> CGFloat{
