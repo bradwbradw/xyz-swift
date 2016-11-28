@@ -1,46 +1,49 @@
 //
-//  LandingTableViewController.swift
+//  LandingViewController.swift
 //  xyz-ios
 //
-//  Created by Bradley Winter on 11/1/16.
+//  Created by Bradley Winter on 11/27/16.
 //  Copyright © 2016 Bradley Winter. All rights reserved.
 //
 
 import UIKit
 
-class LandingTableViewController: UITableViewController, ServerSignals {
-    
-    var delegate = self
-    let Spaces = SpacesSingleton.sharedInstance
-    var spaces:[Space] = []
-    
-    var newSpace:Space?
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        
-        if let spaceView = segue.destination as? SpaceViewController {
-            spaceView.space = self.newSpace
-        }
-    }
+class LandingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var tableView: UITableView!
+    var Spaces = SpacesSingleton.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Server.loadSpaces();
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let server = Server()
+        server.loadSpaces()
+        
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(self.didLoadSpaces),
+                         name: Notification.Name("downloadedSpaces"),
+                        object: nil)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
+    func didLoadSpaces() {
+        print("did load spaces")
+        print(Spaces.asArray())
+        tableView.isHidden = false
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
         //CODE TO BE RUN ON CELL TOUCH
-        let newViewingSpace = spaces[indexPath.row]
+        let newViewingSpace = Spaces.asArray()[indexPath.row]
         print( "now viewing space \(newViewingSpace.name )");
         Spaces.viewing = newViewingSpace
         self.performSegue(withIdentifier: "goToSpace", sender: self)
     }
     
-    func didLoadSpaces(){
-        self.tableView.reloadData()
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,22 +52,22 @@ class LandingTableViewController: UITableViewController, ServerSignals {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return spaces.count
+        return Spaces.asArray().count
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "spaceCell", for: indexPath)
         
         // Configure the cell...
-        cell.textLabel!.text = spaces[indexPath.row].name
+        cell.textLabel!.text = Spaces.asArray()[indexPath.row].name
         // Configure the cell...
         
         return cell
@@ -115,5 +118,5 @@ class LandingTableViewController: UITableViewController, ServerSignals {
      // Pass the selected object to the new view controller.
      }
      */
-    
+
 }

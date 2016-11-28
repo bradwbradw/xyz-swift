@@ -34,8 +34,8 @@ class PlaylisterSingleton {
     
     func upsert(id: String, playlist: Playlist){
         self.map[id] = playlist
-        print("upserted playlist for space \(id). Now map looks like...")
-        print(map)
+//        print("upserted playlist for space \(id). Now map looks like...")
+//        print(map)
     }
     
     func get(forSpace: Space) -> Playlist?{
@@ -83,7 +83,6 @@ class PlaylisterSingleton {
                 var item: Item
             }
             
-            
             func distancesToOtherItems (item: Item, others: [Item]) -> [distanceToItem]{
                 var distances: [distanceToItem] = []
                 
@@ -98,7 +97,6 @@ class PlaylisterSingleton {
                 return distances.sorted(by:closer)
             }
             
-            // sets self.entries
             func sortByNearest (items: [Item], seed: Item){
                 
                 var sorted:[Item] = []
@@ -145,7 +143,6 @@ class PlaylisterSingleton {
             }
             
             // TODO check for if we can actually play it
-            
             var items = space.items
             
             if (items.count == 0){
@@ -171,7 +168,7 @@ class PlaylisterSingleton {
             if ( items.count > 1) {
                 sortByNearest(items: space.items, seed: seed!)
             }
-            Playlister.upsert(id: space.id, playlist: self)
+            print("done recomputing playlist for space \(space.name)")
             
         }
         

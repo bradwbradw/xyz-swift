@@ -35,7 +35,7 @@ class Item: SKSpriteNode {
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
         
-        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
+//        print("creating new item: \(self.title) with x \(self.x) and y \(self.y)")
     }
     
     convenience init(fromJson: [String: AnyObject]){

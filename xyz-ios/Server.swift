@@ -7,22 +7,24 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ServerSignals {
+protocol ServerSignals: UITableViewDelegate {
     func didLoadSpaces()
 }
 class Server {
     
-    class func loadSpaces(){
-        
-        var delegate: ServerSignals?
+    var delegate: ServerSignals?
+    let Spaces = SpacesSingleton.sharedInstance
+    
+    func loadSpaces(){
         
         let defaultFilter: [String:Any] =
             ["where":
                 ["public":true],
                  "include": ["songs"]
             ]
-        var spaces:[Space] = []
+        
         let filterJsonString = Utility.objToJsonString(obj:defaultFilter)!
         let filterJsonStringUrlEncoded = filterJsonString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 
@@ -42,23 +44,17 @@ class Server {
                 print("spaces downloaded successfully.")
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [ [String: AnyObject] ]
-                    
                     if let spacesFromJson = json as [ [String: AnyObject] ]? {
-                        
                         for rawSpace in spacesFromJson {
-                            print("found a space: \(rawSpace["name"]) ")
-                            
-                            spaces.append(Space(fromJson:rawSpace));
-                            
+                            self.Spaces.upsert(space: Space(fromJson:rawSpace));
                         }
-                        delegate?.didLoadSpaces()
-
+                        
+                        NotificationCenter.default.post(name: Notification.Name("downloadedSpaces"),
+                                                        object: nil)
                     }
                 }catch {
                     print("Error with Json: \(error)")
                 }
-                
-                
             }
         }
         task.resume()

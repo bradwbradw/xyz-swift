@@ -34,8 +34,8 @@ class Space {
         
         Playlister.upsert(fromSpace: self)
         
-        print("initialized Space with name \(self.name). playlist is...")
-        Playlister.get(forSpace:self)!.describe()
+//        print("initialized Space with name \(self.name). playlist is...")
+//        Playlister.get(forSpace:self)!.describe()
         
     }
     

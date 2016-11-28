@@ -8,14 +8,12 @@
 
 import Foundation
 
-struct Constants {
     
-    struct spaceDimensions {
-        let minX = 0
-        let minY = 0
-        let width = 600
-        let height = 600
+    struct SPACE_DIMENSIONS {
+        static let minX = 0
+        static let minY = 0
+        static let width = 600
+        static let height = 600
     }
 
-    static let SPACE_DIMENSIONS = spaceDimensions()
-}
+

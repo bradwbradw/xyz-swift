@@ -24,15 +24,13 @@
 		A2231C491DEB789F007343EC /* SpaceViewDotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */; };
 		A2231C4A1DEB78A4007343EC /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
 		A2231C4B1DEB78A5007343EC /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */; };
-		A2231C4C1DEB78A9007343EC /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
-		A2231C4D1DEB78A9007343EC /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
 		A2231C4E1DEB78AD007343EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B31DADC6E800C2F4C4 /* Main.storyboard */; };
 		A2231C4F1DEB78B3007343EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B31DADC6E800C2F4C4 /* Main.storyboard */; };
 		A2231C511DEB78C0007343EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */; };
 		A2231C521DEB78C3007343EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A287A3B61DADC6E800C2F4C4 /* Assets.xcassets */; };
 		A2231C531DEB78C7007343EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */; };
 		A2231C541DEB78C7007343EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287A3AF1DADC6E800C2F4C4 /* AppDelegate.swift */; };
-		A28643371DE23AF100A67CDF /* LandingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643361DE23AF100A67CDF /* LandingTableViewController.swift */; };
+		A2231C561DEB889E007343EC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2231C551DEB889E007343EC /* LandingViewController.swift */; };
 		A28643391DE23C1800A67CDF /* SpaceViewDotScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */; };
 		A286437D1DE274AE00A67CDF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A286437C1DE274AE00A67CDF /* Player.swift */; };
 		A286437F1DE3C26500A67CDF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A286437E1DE3C26500A67CDF /* Podfile */; };
@@ -80,7 +78,7 @@
 		62E0DE67C9895E3A86FA61C8 /* Pods-xyz-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-ios/Pods-xyz-ios.release.xcconfig"; sourceTree = "<group>"; };
 		8294ADDEF4E4DF62BD0DD712 /* Pods-xyz-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xyz-iosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xyz-iosUITests/Pods-xyz-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		939BF4FD84B7B05E7F786EBF /* Pods_xyz_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xyz_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A28643361DE23AF100A67CDF /* LandingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingTableViewController.swift; sourceTree = "<group>"; };
+		A2231C551DEB889E007343EC /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceViewDotScene.swift; sourceTree = "<group>"; };
 		A286437C1DE274AE00A67CDF /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A286437E1DE3C26500A67CDF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
@@ -185,7 +183,7 @@
 				A287A3B81DADC6E800C2F4C4 /* LaunchScreen.storyboard */,
 				A287A3BB1DADC6E800C2F4C4 /* Info.plist */,
 				A287A3B31DADC6E800C2F4C4 /* Main.storyboard */,
-				A28643361DE23AF100A67CDF /* LandingTableViewController.swift */,
+				A2231C551DEB889E007343EC /* LandingViewController.swift */,
 				A28C4BF51DD2C26200E5B338 /* SpaceViewController.swift */,
 				A28643381DE23C1800A67CDF /* SpaceViewDotScene.swift */,
 				A2893ECE1DEA787C00982ABA /* Constants.swift */,
@@ -526,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A28C4BFC1DD2CE8100E5B338 /* Space.swift in Sources */,
-				A28643371DE23AF100A67CDF /* LandingTableViewController.swift in Sources */,
 				A28643391DE23C1800A67CDF /* SpaceViewDotScene.swift in Sources */,
 				A286437D1DE274AE00A67CDF /* Player.swift in Sources */,
 				A28C4BF61DD2C26200E5B338 /* SpaceViewController.swift in Sources */,
@@ -536,6 +533,7 @@
 				A287A3B01DADC6E800C2F4C4 /* AppDelegate.swift in Sources */,
 				A2893EC71DEA433700982ABA /* SpacesSingleton.swift in Sources */,
 				A2D25A401DEB51BD00B1E0DC /* Server.swift in Sources */,
+				A2231C561DEB889E007343EC /* LandingViewController.swift in Sources */,
 				A28C4BFA1DD2CE4B00E5B338 /* Item.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +553,6 @@
 				A2231C531DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECC1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
 				A2231C441DEB7892007343EC /* Server.swift in Sources */,
-				A2231C4C1DEB78A9007343EC /* LandingTableViewController.swift in Sources */,
 				A2893ED01DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +572,6 @@
 				A2231C541DEB78C7007343EC /* AppDelegate.swift in Sources */,
 				A2893ECD1DEA4B9800982ABA /* PlaylisterSingleton.swift in Sources */,
 				A2231C451DEB7893007343EC /* Server.swift in Sources */,
-				A2231C4D1DEB78A9007343EC /* LandingTableViewController.swift in Sources */,
 				A2893ED11DEA787C00982ABA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

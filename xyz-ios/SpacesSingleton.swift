@@ -9,7 +9,7 @@
 import Foundation
 
 class SpacesSingleton {
-
+    
     static let sharedInstance = SpacesSingleton()
     
     var viewing: Space?
@@ -23,8 +23,16 @@ class SpacesSingleton {
     
     func upsert(space: Space){
         self.map[space.id] = space
-        print("upserted space \(space.id). Now map looks like...")
-        print(map)
+//        print("upserted space \(space.id). Now map looks like...")
+//        print(map)
+    }
+    
+    func asArray() -> [Space]{
+        var arr:[Space] = []
+        for spaceMapEntry in map{
+            arr.append(spaceMapEntry.value)
+        }
+        return arr
     }
     
 }
