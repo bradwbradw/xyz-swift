@@ -43,7 +43,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         ytPlayer.delegate = self
         space!.attachItemDelegatesTo(player: player)
         
-        self.scene = SpaceViewDotScene(space: space!)
+        self.scene = SpaceViewDotScene(space: space!, player: player)
         
         let skView = view as! SKView
         skView.showsFPS = true

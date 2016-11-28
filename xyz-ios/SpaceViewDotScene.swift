@@ -8,15 +8,109 @@
 
 import SpriteKit
 
+class ItemDetailView: SKNode{
+
+    
+    var item: Item?
+    var delegate: MediaMethods?
+    let itemName: SKLabelNode
+    let playButton: SKLabelNode
+    let background: SKSpriteNode
+    
+    override init(){
+        
+        
+        itemName = SKLabelNode(fontNamed: "Helvetica")
+        playButton = SKLabelNode(fontNamed: "Helvetica")
+        background = SKSpriteNode()
+        background.color = UIColor.red
+        itemName.text = "XYZ ITEM\n /n "
+        itemName.fontColor = #colorLiteral(red: 1, green: 0.4410438538, blue: 0.9856794477, alpha: 1)
+        itemName.fontSize = 15
+        itemName.verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
+        playButton.verticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
+        playButton.text = "▶"
+
+        super.init()
+        
+        self.addChild(itemName)
+        self.addChild(playButton)
+        self.addChild(background)
+        
+        self.isUserInteractionEnabled = true
+        
+    }
+    
+    func centerOf(node:SKNode) -> CGPoint {
+        let centerX = node.frame.size.width/2
+        let centerY = node.frame.size.height/2
+        print("center is x:\(centerX), y: \(centerY)")
+        return CGPoint(x: centerX, y: centerY)
+    }
+    
+    func updateBackground(){
+        background.size.height = playButton.frame.size.height*2 + itemName.frame.size.height
+        background.size.width = itemName.frame.size.width
+        background.anchorPoint = centerOf(node: background)
+        background.position = centerOf(node: playButton)
+    }
+    func update(withItem: Item){
+        
+        item = withItem
+        
+        self.position = item!.position
+        self.position.y =  self.position.y + 30
+
+        self.isHidden = false
+        self.itemName.text = item!.title
+        print(" item name size is \(itemName.frame.size.width)")
+        updateBackground()
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touching item detail view")
+        var touchedPlayButton = false
+        for touch in touches{
+            
+            let touchLocation = touch.location(in: self)
+            
+            if( playButton.contains(touchLocation)){
+                touchedPlayButton = true
+            }
+            
+            if(touchedPlayButton){
+                
+                print("play that ish")
+                touchPlay()
+            } else {
+                print("did not touch play but touched item detail view")
+            }
+            
+        }
+    }
+
+    
+    func touchPlay(){
+        delegate?.play(item: self.item!)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 class SpaceViewDotScene: SKScene {
     
     var space:Space
     var items:[Item]
     let Playlister = PlaylisterSingleton.sharedInstance
+    var itemDetailView: ItemDetailView
     
     let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
-    init(space:Space) {
+    init(space:Space, player:Player) {
+        
+        itemDetailView = ItemDetailView()
         
         self.space = space
         self.items = space["items"] as [Item]!;
@@ -30,7 +124,7 @@ class SpaceViewDotScene: SKScene {
         self.background.size = size
         // 2
         self.addChild(background)
-//
+//      // FOR iOS version < 9 ( does not support SKCameraNode() )
 //        self.anchorPoint = CGPoint(x:0.5,y:0.5);
 //        let anchorLabel = SKLabelNode(fontNamed: "Arial")
 //        anchorLabel.text = "anchor"
@@ -48,10 +142,16 @@ class SpaceViewDotScene: SKScene {
 //        
         
         self.addChild(generatePlaylistShapeNode())
+        
+        itemDetailView.delegate = player
+        itemDetailView.position = CGPoint(x: 0, y: 0)
+        
         for item in items {
+            item.elementToActivateWhenSelected = itemDetailView
             self.addChild(item)
         }
-        self.scaleMode = SKSceneScaleMode.fill
+        self.addChild(itemDetailView)
+        
         
         let cameraNode = SKCameraNode()
         cameraNode.position = CGPoint(x: scene!.size.width / 2, y:scene!.size.height / 2)
@@ -68,6 +168,9 @@ class SpaceViewDotScene: SKScene {
 //        cameraNode.run(zoomInAction)
 //        
         self.addChild(helloNode)
+        
+        self.scaleMode = SKSceneScaleMode.fill
+        
     }
     
     func keepInsideBoundaries(point: CGPoint) -> CGPoint{
@@ -103,6 +206,11 @@ class SpaceViewDotScene: SKScene {
         }
         recognizer.setTranslation(CGPoint.zero, in: self.view)
         
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        itemDetailView.isHidden = true
+        print("touching view")
     }
     
 //    

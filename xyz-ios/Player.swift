@@ -17,6 +17,7 @@ import AVKit
 protocol MediaMethods {
     
     func play(item: Item)
+    func select(item: Item)
     
 }
 
@@ -75,6 +76,11 @@ class Player: MediaMethods {
         youtubePlayerView?.stopVideo()
         NotificationCenter.default.post(name: Notification.Name("stopSoundCloud"),
                                         object: nil)
+    }
+    
+    func select(item: Item){
+        print("SELECT: \(item.title)")
+        
     }
     func play(item:Item){
         

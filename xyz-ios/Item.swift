@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Item: SKSpriteNode {
+class Item: SKShapeNode {
     //    var id: String
     var id : String
     var title: String
@@ -20,6 +20,8 @@ class Item: SKSpriteNode {
     
     var dateSaved: Date?
     
+    var elementToActivateWhenSelected: ItemDetailView?
+    
     var delegate: MediaMethods?
     
     init(params: [String: String], position: (Int, Int)){
@@ -29,8 +31,13 @@ class Item: SKSpriteNode {
         self.id = params["id"]!
         self.x = position.0
         self.y = position.1
-        let texture = SKTexture(imageNamed: "xyz-square")
-        super.init(texture: texture, color: UIColor(), size: CGSize(width:40, height: 40))
+//        let texture = SKTexture(imageNamed: "xyz-square")
+        
+        super.init()
+        self.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:30, height:30)).cgPath
+        self.fillColor = UIColor.white
+        self.strokeColor = #colorLiteral(red: 0.8134505153, green: 0.9867565036, blue: 0.9832226634, alpha: 1)
+        self.lineWidth = 5
         
         self.position = CGPoint(x:self.x, y: SPACE_DIMENSIONS.height - self.y)
         self.isUserInteractionEnabled = true
@@ -53,7 +60,7 @@ class Item: SKSpriteNode {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.play(item: self)
+        elementToActivateWhenSelected!.update(withItem: self)
     }
     
     func distanceTo(item: Item) -> CGFloat{
