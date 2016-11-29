@@ -68,7 +68,6 @@ class SpaceViewDotScene: SKScene {
         //
         //
         
-        self.addChild(generatePlaylistShapeNode())
         
         itemDetailView.delegate = player
         itemDetailView.isHidden = true
@@ -88,6 +87,17 @@ class SpaceViewDotScene: SKScene {
         
         self.scaleMode = SKSceneScaleMode.resizeFill
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rebuildPlaylistPath), name: Notification.Name("rebuildPlaylistPath"), object: nil)
+
+        
+    }
+    
+    func rebuildPlaylistPath(){
+        
+        let playlistPathNode = childNode(withName: "PlaylistPath")
+        playlistPathNode?.removeFromParent()
+        self.addChild(generatePlaylistShapeNode())
     }
     
     func keepInsideBoundaries(point: CGPoint) -> CGPoint{
@@ -133,32 +143,13 @@ class SpaceViewDotScene: SKScene {
         print("touching view")
     }
     
-    //
-    //    override func didFinishUpdate() {
-    //        if let cameraNode = self.childNode(withName: "camera"){
-    //            centerOnNode(node: cameraNode)
-    //        } else {
-    //            print("cannot find camera node")
-    //        }
-    //    }
-    //
-    //    func centerOnNode(node:SKNode)
-    //    {
-    //        let cameraPositionInScene: CGPoint = convert(node.position, from: node.parent!)
-    //        node.parent?.position = CGPoint(x: (node.parent?.position.x)! - cameraPositionInScene.x, y:(node.parent?.position.y)! - cameraPositionInScene.y);
-    //        print("camera position... ")
-    //        print(cameraPositionInScene)
-    //        print("node parent position ...")
-    //        print(node.parent?.position as Any)
-    //    }
-    
-    
     func generatePlaylistShapeNode() -> SKShapeNode{
         let playlist = Playlister.get(forSpace: self.space)!.entries
         let pointer: UnsafeMutablePointer<CGPoint> = UnsafeMutablePointer(mutating: Playlister.getPoints(forSpace: self.space))
         let shapeNode = SKShapeNode(points: pointer, count: (playlist?.count)!)
         shapeNode.lineWidth = 0.25
         shapeNode.strokeColor = .white
+        shapeNode.name = "PlaylistPath"
         return shapeNode
     }
     

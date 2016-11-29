@@ -13,6 +13,8 @@ class PlaylisterSingleton {
     
     static let sharedInstance = PlaylisterSingleton()
     
+    let Spaces = SpacesSingleton.sharedInstance
+    
     var map: [String: Playlist] = [:]
     var nowPlaying: Item?
     
@@ -29,13 +31,18 @@ class PlaylisterSingleton {
     }
     
     func upsert(fromSpace: Space){
-        upsert(id: fromSpace.id, playlist: Playlist(space: fromSpace))
+        upsert(id: fromSpace.id, playlist: Playlist(space: fromSpace, fromItem: nil))
     }
     
     func upsert(id: String, playlist: Playlist){
         self.map[id] = playlist
 //        print("upserted playlist for space \(id). Now map looks like...")
 //        print(map)
+    }
+    
+    func recomputePlaylist(from item: Item){
+        let newPlaylist = Playlist(space: Spaces.viewing!, fromItem: item)
+        upsert(id: Spaces.viewing!.id, playlist: newPlaylist)
     }
     
     func get(forSpace: Space) -> Playlist?{
@@ -64,8 +71,8 @@ class PlaylisterSingleton {
         
         let Playlister = PlaylisterSingleton.sharedInstance
         
-        init(space: Space){
-            recompute(space: space, fromItem: nil)
+        init(space: Space, fromItem item: Item?){
+            recompute(space: space, fromItem: item)
         }
         func describe(){
             if(entries == nil){

@@ -85,6 +85,10 @@ class Player: MediaMethods {
     func play(item:Item){
         
         Spaces.playing = item.parentSpace!
+        
+        Playlister.recomputePlaylist(from: item)
+        
+        Utility.broadcast(notification: "rebuildPlaylistPath")
     
         Spaces.playing!.unsetAllPlaying()
         item.setPlaying()
