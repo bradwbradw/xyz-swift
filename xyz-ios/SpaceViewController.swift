@@ -16,6 +16,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     var space: Space?
     var activeItem: Item?
     var scene: SpaceViewDotScene?
+    var player: Player?
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
     @IBOutlet weak var scPlayer: UIView!
@@ -35,12 +36,12 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
+        player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
         ytPlayer.delegate = self
         self.space = Spaces.viewing!
         self.title = space!.name
-        self.scene = SpaceViewDotScene(space: space!, player: player)
+        self.scene = SpaceViewDotScene(space: space!, player: player!)
         
         let skView = sceneContainer as! SKView
         skView.showsFPS = true
@@ -48,6 +49,10 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         skView.ignoresSiblingOrder = true
         skView.presentScene(self.scene)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        player!.stopAll()
     }
     
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
