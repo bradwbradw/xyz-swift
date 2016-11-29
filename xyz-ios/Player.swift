@@ -16,7 +16,7 @@ import AVKit
 
 protocol MediaMethods {
     
-    func play(item: Item)
+    func play(item:Item, alsoRecomputePlaylist: Bool)
     func select(item: Item)
     
 }
@@ -42,24 +42,37 @@ class Player: MediaMethods {
     }
     
     @objc func didFinishPlaying(){
+        print("did finish playing call")
         let finishedItem = self.Playlister.getNowPlaying()!
-        print("song done. now playing was...")
-        print(finishedItem)
+        finishedItem.setDidPlay()
         
-        let playlist = Playlister.get(forSpace: Spaces.playing!)!.entries!
-        
-        if let i = playlist.index(of:finishedItem){
-            
-            let nextItem: Item?
-            if (i + 1 == playlist.count){
-                nextItem  = playlist[0]
-            } else {
-                nextItem = playlist[i+1]
-            }
-            
-            play(item: nextItem!)
+        if let nextItem = findNextUnplayed(from: finishedItem){
+            play(item: nextItem, alsoRecomputePlaylist: false)
         }
         
+    }
+    func findNextUnplayed(from finishedItem:Item) -> Item?{
+        
+        let playlist = Playlister.get(forSpace: Spaces.playing!)!.entries!
+        var foundNext:Item? = nil
+        
+        if let finishedIndex = playlist.index(of:finishedItem) as Int?{
+            
+            for i in (finishedIndex+1) ..< playlist.count {
+                if (foundNext == nil && !playlist[i].state.didPlay[1]){
+                    foundNext = playlist[i]
+                }
+            }
+            if(foundNext == nil){
+                for i in 0 ..< finishedIndex {
+                    if (foundNext != nil && !playlist[i].state.didPlay[1]){
+                        foundNext = playlist[i]
+                    }
+                }
+            }
+        }
+        print("found next:\(foundNext?.title)")
+        return foundNext
         
     }
     func showYoutube(){
@@ -82,18 +95,19 @@ class Player: MediaMethods {
         print("SELECT: \(item.title)")
         
     }
-    func play(item:Item){
+    func play(item:Item, alsoRecomputePlaylist: Bool = true){
         
         Spaces.playing = item.parentSpace!
         
-        Playlister.recomputePlaylist(from: item)
-        
-        Utility.broadcast(notification: "rebuildPlaylistPath")
+        if(alsoRecomputePlaylist){
+            Playlister.recomputePlaylist(from: item)
+            Utility.broadcast(notification: "rebuildPlaylistPath")
+        }
     
         Spaces.playing!.unsetAllPlaying()
         item.setPlaying()
         
-        print("PLAY: \(item.provider) id \(item.provider_id) ")
+        print("PLAY: \(item.provider) id \(item.provider_id): \(item.title)")
         self.label.text = item.title
         Playlister.nowPlaying = item
         

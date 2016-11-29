@@ -9,9 +9,10 @@
 import SpriteKit
 
 struct itemState {
-
-    var playing: [Bool] = [false, false] // index 0 is last frame state, 1 is current frame state
-    var selected: [Bool] = [false, false]
+// these are arrays with 2 cells: index 0 shows state in last animation frame, 1 shows current frame (frame refers to SKScene animation frames)
+    var playing: [Bool]
+    var selected: [Bool]
+    var didPlay: [Bool]
     
     
     subscript(prop: String) -> [Bool] {
@@ -49,7 +50,7 @@ class Item: SKShapeNode, ServerSignals {
     var provider: String
     var provider_id: String
     var parentSpace: Space?
-    var state = itemState( playing: [false, false], selected: [false, false])
+    var state = itemState( playing: [false, false], selected: [false, false], didPlay: [false, false])
     
     var dateSaved: Date?
     
@@ -112,6 +113,9 @@ class Item: SKShapeNode, ServerSignals {
     }
     func unsetPlaying(){
         self.state.playing[1] = false
+    }
+    func setDidPlay(){
+        self.state.didPlay[1] = true
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

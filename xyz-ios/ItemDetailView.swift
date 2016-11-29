@@ -82,7 +82,7 @@ class ItemDetailView: SKNode{
     
     
     func touchPlay(){
-        delegate?.play(item: self.item!)
+        delegate?.play(item: self.item!,alsoRecomputePlaylist: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
