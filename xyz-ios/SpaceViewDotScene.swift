@@ -184,6 +184,15 @@ class SpaceViewDotScene: SKScene {
         
     }
     
+    
+    func applyDidPlayStyle(to item: Item){
+        item.alpha = 0.4
+    }
+    
+    func removeDidPlayStyle(to item: Item){
+        item.alpha = 1
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         
         for item in items {
@@ -205,6 +214,16 @@ class SpaceViewDotScene: SKScene {
             if !item.state.selected[1] && changed(state: "selected", for: item ){
                 removeSelectedStyle(to:item)
                 item.state.selected[0] = false
+            }
+            
+            if item.state.didPlay[1] && changed(state: "didPlay",for: item ){
+                applyDidPlayStyle(to:item)
+                item.state.didPlay[0] = true
+            }
+            
+            if !item.state.didPlay[1] && changed(state: "didPlay", for: item ){
+                removeDidPlayStyle(to:item)
+                item.state.didPlay[0] = false
             }
         }
     }
