@@ -21,9 +21,11 @@ protocol MediaMethods {
     
 }
 
-class Player: MediaMethods {
+class PlayerSingleton: MediaMethods {
     
-    var label: UILabel
+    static let sharedInstance = PlayerSingleton()
+
+    var label: UILabel?
     var youtubePlayerView: YTPlayerView?
     var soundcloudPlayerView: UIView?
     let Spaces = SpacesSingleton.sharedInstance
@@ -33,10 +35,10 @@ class Player: MediaMethods {
     
     let Playlister = PlaylisterSingleton.sharedInstance
     
-    init(label: UILabel, ytView: YTPlayerView, scView: UIView){
-        self.label = label
-        self.youtubePlayerView = ytView
-        self.soundcloudPlayerView = scView
+    private init(){
+//        self.label = label
+//        self.youtubePlayerView = ytView
+//        self.soundcloudPlayerView = scView
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didFinishPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
@@ -108,7 +110,7 @@ class Player: MediaMethods {
         item.setPlaying()
         
         print("PLAY: \(item.provider) id \(item.provider_id): \(item.title)")
-        self.label.text = item.title
+        self.label?.text = item.title
         Playlister.nowPlaying = item
         
         stopAll()

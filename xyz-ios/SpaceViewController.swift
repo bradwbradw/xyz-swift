@@ -16,7 +16,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     var space: Space?
     var activeItem: Item?
     var scene: SpaceViewDotScene?
-    var player: Player?
+    let Player = PlayerSingleton.sharedInstance
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
     @IBOutlet weak var scPlayer: UIView!
@@ -36,12 +36,14 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
-        
+//        player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
+        Player.youtubePlayerView = ytPlayer
+        Player.soundcloudPlayerView = scPlayer
+        Player.label = itemNameLabel
         ytPlayer.delegate = self
         self.space = Spaces.viewing!
         self.title = space!.name
-        self.scene = SpaceViewDotScene(space: space!, player: player!)
+        self.scene = SpaceViewDotScene(space: space!)
         
         let skView = sceneContainer as! SKView
         skView.showsFPS = true
@@ -52,7 +54,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        player!.stopAll()
+        Player.stopAll()
     }
     
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
@@ -65,7 +67,6 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
             break
         case YTPlayerState.ended:
             print("youtube ended playback")
-//            player.didFinishPlaying(<#T##Player#>)
             break
         default:
             break

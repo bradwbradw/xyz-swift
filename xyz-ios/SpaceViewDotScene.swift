@@ -16,6 +16,8 @@ class SpaceViewDotScene: SKScene {
     var itemDetailView: ItemDetailView
     var haloNode: SKShapeNode
     
+    let Player = PlayerSingleton.sharedInstance
+    
     let regularDotPath: CGPath
     let selectedDotPath: CGPath
     var minScaleSoFar: CGFloat
@@ -23,7 +25,7 @@ class SpaceViewDotScene: SKScene {
     
     //    let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
-    init(space activeSpace:Space, player:Player) {
+    init(space activeSpace:Space) {
         
         minScaleSoFar = 1.0
         maxScaleSoFar = 1.0
@@ -69,7 +71,7 @@ class SpaceViewDotScene: SKScene {
         //
         
         
-        itemDetailView.delegate = player
+        itemDetailView.delegate = Player
         itemDetailView.isHidden = true
         
         for item in items {
