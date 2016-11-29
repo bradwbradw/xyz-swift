@@ -17,6 +17,7 @@ class ItemDetailView: SKNode{
     var delegate: MediaMethods?
     let itemName: SKLabelNode
     let playButton: SKLabelNode
+    var sceneCamera: SKCameraNode?
     let background: SKSpriteNode
     
     override init(){
@@ -33,7 +34,7 @@ class ItemDetailView: SKNode{
         
         super.init()
         
-        self.zPosition = 2
+        self.zPosition = 3
         self.addChild(background)
         self.addChild(itemName)
         self.addChild(playButton)
@@ -53,12 +54,13 @@ class ItemDetailView: SKNode{
         item = withItem
         
         self.position = item!.position
-        self.position.y =  self.position.y + 60
+        self.position.y =  self.position.y + 60*sceneCamera!.xScale
         
         self.isHidden = false
         self.itemName.text = item!.title
         print(" item name size is \(itemName.frame.size.width)")
         updateBackground()
+        self.setScale(sceneCamera!.xScale)
         
     }
     

@@ -18,11 +18,15 @@ class SpaceViewDotScene: SKScene {
     
     let regularDotPath: CGPath
     let selectedDotPath: CGPath
+    var minScaleSoFar: CGFloat
+    var maxScaleSoFar: CGFloat
     
-    let background = SKSpriteNode(color: .black, size: CGSize.zero)
+    //    let background = SKSpriteNode(color: .black, size: CGSize.zero)
     
     init(space activeSpace:Space, player:Player) {
         
+        minScaleSoFar = 1.0
+        maxScaleSoFar = 1.0
         itemDetailView = ItemDetailView()
         
         space = activeSpace
@@ -40,29 +44,29 @@ class SpaceViewDotScene: SKScene {
                                height: SPACE_DIMENSIONS.height))
         print("init scene with size...")
         print(size)
-     
-        self.background.name = "background"
-        self.background.anchorPoint = CGPoint(x: 0, y: 0)
-        self.background.size = size
+        
+        //        self.background.name = "background"
+        //        self.background.anchorPoint = CGPoint(x: 0, y: 0)
+        //        self.background.size = size
         // 2
-        self.addChild(background)
+        //        self.addChild(background)
         self.addChild(haloNode)
-//      // FOR iOS version < 9 ( does not support SKCameraNode() )
-//        self.anchorPoint = CGPoint(x:0.5,y:0.5);
-//        let anchorLabel = SKLabelNode(fontNamed: "Arial")
-//        anchorLabel.text = "anchor"
-//        anchorLabel.position = self.anchorPoint
-//        self.addChild(anchorLabel)
-//        
-//        let scrollingWorldNode = SKNode()
-//        self.addChild(scrollingWorldNode)
-//        
-//        let camera = SKNode()
-//        camera.name = "camera"
-//        scrollingWorldNode.addChild(camera)
-//        
-//
-//        
+        //      // FOR iOS version < 9 ( does not support SKCameraNode() )
+        //        self.anchorPoint = CGPoint(x:0.5,y:0.5);
+        //        let anchorLabel = SKLabelNode(fontNamed: "Arial")
+        //        anchorLabel.text = "anchor"
+        //        anchorLabel.position = self.anchorPoint
+        //        self.addChild(anchorLabel)
+        //
+        //        let scrollingWorldNode = SKNode()
+        //        self.addChild(scrollingWorldNode)
+        //
+        //        let camera = SKNode()
+        //        camera.name = "camera"
+        //        scrollingWorldNode.addChild(camera)
+        //
+        //
+        //
         
         self.addChild(generatePlaylistShapeNode())
         
@@ -80,19 +84,9 @@ class SpaceViewDotScene: SKScene {
         cameraNode.position = CGPoint(x: scene!.size.width / 2, y:scene!.size.height / 2)
         self.addChild(cameraNode)
         self.camera = cameraNode
+        itemDetailView.sceneCamera = self.camera
         
-        let helloNode:SKLabelNode = SKLabelNode(fontNamed: "Helvetica")
-        helloNode.text = space.name;
-        helloNode.fontSize = 42;
-        helloNode.position = CGPoint(x:size.width/2, y:size.height * 6/7)
-        
-//        let zoomInAction = SKAction.scale(to: 0.5, duration: 1)
-//        _ = SKAction.scale(to: 0.5, duration: 1)
-//        cameraNode.run(zoomInAction)
-//        
-        self.addChild(helloNode)
-        
-        self.scaleMode = SKSceneScaleMode.fill
+        self.scaleMode = SKSceneScaleMode.resizeFill
         
     }
     
@@ -116,19 +110,21 @@ class SpaceViewDotScene: SKScene {
         }
         
         return CGPoint(x: x, y: y)
-
+        
     }
     func handlePan(recognizer: UIPanGestureRecognizer){
-        
         let translation = recognizer.translation(in: self.view)
-        if let camera = self.camera{
-            let newX = camera.position.x - translation.x
-            let newY = camera.position.y + translation.y
-            
-            camera.position = keepInsideBoundaries(point: CGPoint(x: newX, y: newY))
-        }
+        let newX = (camera!.position.x - translation.x*camera!.xScale)
+        let newY = (camera!.position.y + translation.y*camera!.xScale)
+        camera!.position = keepInsideBoundaries(point: CGPoint(x: newX, y: newY))
         recognizer.setTranslation(CGPoint.zero, in: self.view)
-        
+    }
+    
+    func handlePinch(recognizer: UIPinchGestureRecognizer){
+        let targetZoom = camera!.xScale / recognizer.scale
+        camera!.xScale = targetZoom
+        camera!.yScale = targetZoom
+        recognizer.scale = 1.0//(CGPoint.zero, in: self.view)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -137,24 +133,24 @@ class SpaceViewDotScene: SKScene {
         print("touching view")
     }
     
-//    
-//    override func didFinishUpdate() {
-//        if let cameraNode = self.childNode(withName: "camera"){
-//            centerOnNode(node: cameraNode)
-//        } else {
-//            print("cannot find camera node")
-//        }
-//    }
-//    
-//    func centerOnNode(node:SKNode)
-//    {
-//        let cameraPositionInScene: CGPoint = convert(node.position, from: node.parent!)
-//        node.parent?.position = CGPoint(x: (node.parent?.position.x)! - cameraPositionInScene.x, y:(node.parent?.position.y)! - cameraPositionInScene.y);
-//        print("camera position... ")
-//        print(cameraPositionInScene)
-//        print("node parent position ...")
-//        print(node.parent?.position as Any)
-//    }
+    //
+    //    override func didFinishUpdate() {
+    //        if let cameraNode = self.childNode(withName: "camera"){
+    //            centerOnNode(node: cameraNode)
+    //        } else {
+    //            print("cannot find camera node")
+    //        }
+    //    }
+    //
+    //    func centerOnNode(node:SKNode)
+    //    {
+    //        let cameraPositionInScene: CGPoint = convert(node.position, from: node.parent!)
+    //        node.parent?.position = CGPoint(x: (node.parent?.position.x)! - cameraPositionInScene.x, y:(node.parent?.position.y)! - cameraPositionInScene.y);
+    //        print("camera position... ")
+    //        print(cameraPositionInScene)
+    //        print("node parent position ...")
+    //        print(node.parent?.position as Any)
+    //    }
     
     
     func generatePlaylistShapeNode() -> SKShapeNode{
@@ -176,13 +172,13 @@ class SpaceViewDotScene: SKScene {
         }
     }
     
-    
     func changed(state: String, for item: Item ) -> Bool {
         return item.state[state][0]  != item.state[state][1]
     }
     
     func applySelectedStyle(to item: Item){
         item.path = selectedDotPath
+        item.zPosition = 2
         if(item.state.playing[1]){
             updatePlayingHalo(newPlayingItem: item)
         }
@@ -196,7 +192,6 @@ class SpaceViewDotScene: SKScene {
         }
         
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -222,6 +217,7 @@ class SpaceViewDotScene: SKScene {
             }
         }
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

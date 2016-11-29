@@ -37,9 +37,10 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         
         let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
-        space = Spaces.viewing!
+        self.space = Spaces.viewing!
 
         ytPlayer.delegate = self
+        self.title = space!.name
         
         self.scene = SpaceViewDotScene(space: space!, player: player)
         
@@ -87,6 +88,11 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     @IBAction func handlePan(recognizer: UIPanGestureRecognizer){
         if let scene = self.scene{
             scene.handlePan(recognizer: recognizer)
+        }
+    }
+    @IBAction func handlePinch(recognizer: UIPinchGestureRecognizer) {
+        if let scene = self.scene{
+            scene.handlePinch(recognizer: recognizer)
         }
     }
 

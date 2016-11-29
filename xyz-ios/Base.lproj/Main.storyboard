@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-E2-z6W">
-                                <rect key="frame" x="234" y="464" width="300" height="19.5"/>
+                                <rect key="frame" x="234" y="464" width="300" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="fJc-5q-Dmp"/>
                                 </constraints>
@@ -69,7 +69,7 @@
                                         <rect key="frame" x="0.0" y="28" width="400" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5UO-lj-3lg" id="PBV-tl-67K">
-                                            <rect key="frame" x="0.0" y="0.0" width="400" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -108,15 +108,15 @@
             </objects>
             <point key="canvasLocation" x="-26.5625" y="-223.82812499999997"/>
         </scene>
-        <!--Space View Controller-->
+        <!--Space-->
         <scene sceneID="cFm-aO-80d">
             <objects>
-                <viewController id="jFW-jm-MZ1" customClass="SpaceViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Space" id="jFW-jm-MZ1" customClass="SpaceViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wdj-Km-fxP"/>
                         <viewControllerLayoutGuide type="bottom" id="g0h-xX-Xw3"/>
                     </layoutGuides>
-                    <view key="view" contentMode="center" id="YGy-YP-Lnd" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="center" id="YGy-YP-Lnd" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -137,7 +137,7 @@
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
-                                        <rect key="frame" x="38.5" y="25" width="692" height="225"/>
+                                        <rect key="frame" x="38" y="25" width="692" height="225"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -168,6 +168,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="NWt-GK-tCL" appends="YES" id="2zC-Ls-idF"/>
+                            <outletCollection property="gestureRecognizers" destination="xdT-Qb-4yE" appends="YES" id="g5V-BH-LLx"/>
                         </connections>
                     </view>
                     <connections>
@@ -182,6 +183,11 @@
                         <action selector="handlePanWithRecognizer:" destination="jFW-jm-MZ1" id="ggB-Cv-uHo"/>
                     </connections>
                 </panGestureRecognizer>
+                <pinchGestureRecognizer id="xdT-Qb-4yE">
+                    <connections>
+                        <action selector="handlePinchWithRecognizer:" destination="jFW-jm-MZ1" id="e8w-9F-0Vc"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="816" y="-224"/>
         </scene>
