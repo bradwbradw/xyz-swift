@@ -35,13 +35,13 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func didLoadSpaces() {
         print("did load spaces")
         print(Spaces.asArray())
-        tableView.isHidden = false
-        self.loadingIndicator.stopAnimating()
-        DispatchQueue.main.async {
-        
+        DispatchQueue.main.sync {
             self.tableView.reloadData()
-
         }
+        DispatchQueue.main.sync {
+            self.loadingIndicator.stopAnimating()
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
