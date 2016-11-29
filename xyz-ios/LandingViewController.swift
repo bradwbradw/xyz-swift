@@ -12,8 +12,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var loadinglabel: UILabel!
-    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     var Spaces = SpacesSingleton.sharedInstance
     
     override func viewDidLoad() {
@@ -24,6 +23,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let server = Server()
         server.loadSpaces()
         
+        self.loadingIndicator.startAnimating()
         NotificationCenter
             .default
             .addObserver(self,
@@ -36,11 +36,10 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("did load spaces")
         print(Spaces.asArray())
         tableView.isHidden = false
-        
+        self.loadingIndicator.stopAnimating()
         DispatchQueue.main.async {
-            
+        
             self.tableView.reloadData()
-            self.loadinglabel.isHidden = true
 
         }
     }
@@ -77,6 +76,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Configure the cell...
         cell.textLabel!.text = Spaces.asArray()[indexPath.row].name
+        cell.textLabel!.textColor = UIColor.white
         // Configure the cell...
         
         return cell
