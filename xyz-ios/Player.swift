@@ -90,7 +90,7 @@ class Player: MediaMethods {
         item.setPlaying()
         
         print("PLAY: \(item.provider) id \(item.provider_id) ")
-        self.label.text = item.provider+" "+item.provider_id+" "+item.title
+        self.label.text = item.title
         Playlister.nowPlaying = item
         
         stopAll()

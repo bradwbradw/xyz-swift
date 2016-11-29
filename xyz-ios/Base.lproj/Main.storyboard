@@ -122,7 +122,7 @@
                                 <rect key="frame" x="0.0" y="774" width="768" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
-                                        <rect key="frame" x="8" y="0.0" width="768" height="0.0"/>
+                                        <rect key="frame" x="8" y="11" width="768" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -144,17 +144,17 @@
                                     <constraint firstAttribute="trailing" secondItem="9gi-9b-rCS" secondAttribute="trailing" id="1jt-GI-2iR"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="3DW-g1-33G"/>
                                     <constraint firstAttribute="height" constant="250" id="CiJ-I1-Fa5"/>
-                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="top" id="IVn-JT-Glt"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMY-bb-EuW" secondAttribute="trailing" constant="-8" id="FOG-Ka-Xw6"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="top" constant="11" id="IVn-JT-Glt"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="TXD-aP-2qU"/>
-                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" constant="8" id="TjA-pi-Clu"/>
                                     <constraint firstAttribute="trailing" secondItem="uRm-Hv-sjd" secondAttribute="trailing" id="UDY-O7-Wlr"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="ab1-oN-De1"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="aqI-md-XSF"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" constant="8" id="cBv-Lk-3pn"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="icY-DA-x85"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.8" id="m0h-EI-M5G"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.8" id="miF-tr-nmP"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="r2a-5h-jvs"/>
-                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="width" secondItem="N8V-hQ-HcV" secondAttribute="width" id="sYu-ok-8jy"/>
                                 </constraints>
                             </view>
                         </subviews>
