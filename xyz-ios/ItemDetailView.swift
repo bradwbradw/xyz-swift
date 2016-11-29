@@ -24,9 +24,8 @@ class ItemDetailView: SKNode{
         
         itemName = SKLabelNode(fontNamed: "Helvetica")
         playButton = SKLabelNode(fontNamed: "Helvetica")
-        background = SKSpriteNode(texture: nil, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.6012577571), size: CGSize(width:60, height:20))
-        itemName.text = "XYZ ITEM\n /n "
-        itemName.fontColor = #colorLiteral(red: 1, green: 0.4410438538, blue: 0.9856794477, alpha: 1)
+        background = SKSpriteNode(texture: nil, color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3027209052), size: CGSize(width:60, height:20))
+        itemName.fontColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         itemName.fontSize = 15
         itemName.verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
         playButton.verticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
@@ -44,8 +43,8 @@ class ItemDetailView: SKNode{
     }
     
     func updateBackground(){
-        background.size.height = playButton.frame.size.height + itemName.frame.size.height
-        background.size.width = itemName.frame.size.width
+        background.size.height = playButton.frame.size.height + itemName.frame.size.height + 20
+        background.size.width = itemName.frame.size.width + 20
         background.position = CGPoint(x:0,y:0)
     }
     

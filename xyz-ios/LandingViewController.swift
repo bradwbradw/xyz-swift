@@ -36,11 +36,11 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("did load spaces")
         print(Spaces.asArray())
         tableView.isHidden = false
-        loadinglabel.isHidden = true
         
         DispatchQueue.main.async {
             
             self.tableView.reloadData()
+            self.loadinglabel.isHidden = true
 
         }
     }
