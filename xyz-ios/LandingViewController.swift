@@ -11,6 +11,9 @@ import UIKit
 class LandingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var loadinglabel: UILabel!
+    
     var Spaces = SpacesSingleton.sharedInstance
     
     override func viewDidLoad() {
@@ -33,6 +36,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("did load spaces")
         print(Spaces.asArray())
         tableView.isHidden = false
+        loadinglabel.isHidden = true
         
         DispatchQueue.main.async {
             
