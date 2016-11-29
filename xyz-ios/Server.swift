@@ -62,7 +62,7 @@ class Server {
     
     func loadImage(url: String){
         
-        print("will load image for item at url \(url)")
+//        print("will load image for item at url \(url)")
         
         let urlObj: URL = URL(string: url)!
         let urlRequest: URLRequest = URLRequest(url: urlObj)
@@ -72,12 +72,13 @@ class Server {
             
             if
                 let httpResponse = response as? HTTPURLResponse,
-                httpResponse.statusCode == 200,
+                httpResponse.statusCode == 200 || httpResponse.statusCode == 404,
+                // also consider 404 because youtube still provides a placeholder image if status 404
                 let data = data,
                 let image = UIImage(data: data),
                 error == nil
             {
-                print("downloaded image from \(urlObj.absoluteString)");
+//                print("downloaded image from \(urlObj.absoluteString)");
                 self.delegate?.didLoad(image: image)
                 
             }else {

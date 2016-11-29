@@ -18,9 +18,9 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
     var scene: SpaceViewDotScene?
     
     @IBOutlet weak var ytPlayer: YTPlayerView!
-    
     @IBOutlet weak var scPlayer: UIView!
     @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var sceneContainer: UIView!
     
     func setActive(item: Item?){
         guard let newItem = item else {
@@ -37,14 +37,12 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         
         let player = Player(label: itemNameLabel, ytView: ytPlayer, scView: scPlayer )
         
-        self.space = Spaces.viewing!
-
         ytPlayer.delegate = self
+        self.space = Spaces.viewing!
         self.title = space!.name
-        
         self.scene = SpaceViewDotScene(space: space!, player: player)
         
-        let skView = view as! SKView
+        let skView = sceneContainer as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true

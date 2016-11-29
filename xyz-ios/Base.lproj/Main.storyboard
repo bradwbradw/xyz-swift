@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,11 +117,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eyr-d8-XRo" userLabel="Scene Container" customClass="SKView">
+                                <rect key="frame" x="0.0" y="64" width="768" height="760"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NWt-GK-tCL" appends="YES" id="p2Q-zX-KNJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="xdT-Qb-4yE" appends="YES" id="4Pi-C3-ixc"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8V-hQ-HcV" userLabel="media playback view">
                                 <rect key="frame" x="0.0" y="774" width="768" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-bb-EuW" userLabel="Name Label">
-                                        <rect key="frame" x="8" y="11" width="768" height="0.0"/>
+                                        <rect key="frame" x="8" y="0.0" width="752" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Sit-tJ-ctt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -130,6 +140,9 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRm-Hv-sjd">
                                         <rect key="frame" x="0.0" y="50" width="768" height="200"/>
                                         <color key="backgroundColor" red="0.58597404730000002" green="0.50337938199999999" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="gRm-Gy-4Fr"/>
+                                        </constraints>
                                         <connections>
                                             <segue destination="pgZ-hd-SFt" kind="embed" id="2O9-z1-ooB"/>
                                         </connections>
@@ -137,6 +150,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-9b-rCS" customClass="YTPlayerView">
                                         <rect key="frame" x="0.0" y="50" width="768" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="qHi-67-MWq"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
@@ -144,16 +160,14 @@
                                     <constraint firstAttribute="trailing" secondItem="9gi-9b-rCS" secondAttribute="trailing" id="1jt-GI-2iR"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="3DW-g1-33G"/>
                                     <constraint firstAttribute="height" constant="250" id="CiJ-I1-Fa5"/>
-                                    <constraint firstAttribute="trailing" secondItem="NMY-bb-EuW" secondAttribute="trailing" constant="-8" id="FOG-Ka-Xw6"/>
-                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="top" constant="11" id="IVn-JT-Glt"/>
+                                    <constraint firstAttribute="trailing" secondItem="NMY-bb-EuW" secondAttribute="trailing" constant="8" id="FOG-Ka-Xw6"/>
+                                    <constraint firstItem="NMY-bb-EuW" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="top" id="IVn-JT-Glt"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="TXD-aP-2qU"/>
                                     <constraint firstAttribute="trailing" secondItem="uRm-Hv-sjd" secondAttribute="trailing" id="UDY-O7-Wlr"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="ab1-oN-De1"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="aqI-md-XSF"/>
                                     <constraint firstItem="NMY-bb-EuW" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" constant="8" id="cBv-Lk-3pn"/>
                                     <constraint firstItem="9gi-9b-rCS" firstAttribute="bottom" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="icY-DA-x85"/>
-                                    <constraint firstItem="uRm-Hv-sjd" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.8" id="m0h-EI-M5G"/>
-                                    <constraint firstItem="9gi-9b-rCS" firstAttribute="height" secondItem="N8V-hQ-HcV" secondAttribute="height" multiplier="0.8" id="miF-tr-nmP"/>
                                     <constraint firstItem="uRm-Hv-sjd" firstAttribute="centerX" secondItem="N8V-hQ-HcV" secondAttribute="centerX" id="r2a-5h-jvs"/>
                                 </constraints>
                             </view>
@@ -161,19 +175,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="N8V-hQ-HcV" firstAttribute="top" secondItem="Eyr-d8-XRo" secondAttribute="bottom" constant="-50" id="3gg-lb-YPH"/>
                             <constraint firstItem="g0h-xX-Xw3" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="F1W-OJ-zny"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="leading" secondItem="YGy-YP-Lnd" secondAttribute="leading" id="HJn-iz-aDQ"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" id="I3J-oN-vwK"/>
+                            <constraint firstItem="Eyr-d8-XRo" firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="Jto-8o-s45"/>
+                            <constraint firstItem="Eyr-d8-XRo" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="Qsu-bp-bMq"/>
                             <constraint firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="tne-7W-Qop"/>
+                            <constraint firstItem="Eyr-d8-XRo" firstAttribute="top" secondItem="Wdj-Km-fxP" secondAttribute="bottom" id="vqn-Ho-IZP"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="NWt-GK-tCL" appends="YES" id="2zC-Ls-idF"/>
-                            <outletCollection property="gestureRecognizers" destination="xdT-Qb-4yE" appends="YES" id="g5V-BH-LLx"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="itemNameLabel" destination="NMY-bb-EuW" id="0dX-PS-Kjr"/>
                         <outlet property="scPlayer" destination="uRm-Hv-sjd" id="jja-wu-EWY"/>
+                        <outlet property="sceneContainer" destination="Eyr-d8-XRo" id="D9f-Qm-IyP"/>
                         <outlet property="ytPlayer" destination="9gi-9b-rCS" id="JAD-Si-F5d"/>
                     </connections>
                 </viewController>

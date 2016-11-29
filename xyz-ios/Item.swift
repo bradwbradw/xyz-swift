@@ -96,7 +96,6 @@ class Item: SKShapeNode, ServerSignals {
     }
     
     func didLoad(image: UIImage?) {
-        print("got the signal: \(self.title)")
         if let img = image{
             self.fillTexture = SKTexture(image:img)
         }

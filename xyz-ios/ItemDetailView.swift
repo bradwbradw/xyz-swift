@@ -57,14 +57,12 @@ class ItemDetailView: SKNode{
         
         self.isHidden = false
         self.itemName.text = item!.title
-        print(" item name size is \(itemName.frame.size.width)")
         updateBackground()
         self.setScale(sceneCamera!.xScale)
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touching item detail view")
         var touchedPlayButton = false
         for touch in touches{
             
@@ -76,10 +74,7 @@ class ItemDetailView: SKNode{
             
             if(touchedPlayButton){
                 
-                print("play that ish")
                 touchPlay()
-            } else {
-                print("did not touch play but touched item detail view")
             }
             
         }
