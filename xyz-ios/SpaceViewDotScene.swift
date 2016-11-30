@@ -9,7 +9,8 @@
 import SpriteKit
 
 class SpaceViewDotScene: SKScene {
-    
+    let MAX_ZOOM: CGFloat = 2.0
+    let MIN_ZOOM: CGFloat = 0.1
     var space:Space
     var items:[Item]
     let Playlister = PlaylisterSingleton.sharedInstance
@@ -20,15 +21,14 @@ class SpaceViewDotScene: SKScene {
     
     let regularDotPath: CGPath
     let selectedDotPath: CGPath
-    var minScaleSoFar: CGFloat
-    var maxScaleSoFar: CGFloat
     
-    //    let background = SKSpriteNode(color: .black, size: CGSize.zero)
+    let spaceSize = CGSize(width: 3000,
+                          height: SPACE_DIMENSIONS.height*2)
+    
+    let background = SKSpriteNode(texture: SKTexture(imageNamed: "gradient"),color: UIColor.white, size: CGSize.zero)
     
     init(space activeSpace:Space) {
         
-        minScaleSoFar = 1.0
-        maxScaleSoFar = 1.0
         itemDetailView = ItemDetailView()
         
         space = activeSpace
@@ -42,16 +42,18 @@ class SpaceViewDotScene: SKScene {
         haloNode.strokeColor = UIColor.white
         haloNode.isHidden=true
         
-        super.init(size:CGSize(width: SPACE_DIMENSIONS.width,
-                               height: SPACE_DIMENSIONS.height))
+        super.init(size:spaceSize)
         print("init scene with size...")
         print(size)
         
-        //        self.background.name = "background"
-        //        self.background.anchorPoint = CGPoint(x: 0, y: 0)
-        //        self.background.size = size
+        
+        let background = SKSpriteNode(imageNamed: "gradient")
+        
+        background.size = CGSize(width:frame.size.width*2, height:frame.size.height*2)
+        background.position = CGPoint(x: SPACE_DIMENSIONS.width*(-1), y: SPACE_DIMENSIONS.height)
+//        background.size = CGSize(width:spaceSize.width*4, height: spaceSize.height*4)
         // 2
-        //        self.addChild(background)
+        self.addChild(background)
         self.addChild(haloNode)
         //      // FOR iOS version < 9 ( does not support SKCameraNode() )
         //        self.anchorPoint = CGPoint(x:0.5,y:0.5);
@@ -89,10 +91,8 @@ class SpaceViewDotScene: SKScene {
         
         self.scaleMode = SKSceneScaleMode.resizeFill
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.rebuildPlaylistPath), name: Notification.Name("rebuildPlaylistPath"), object: nil)
 
-        
     }
     
     func rebuildPlaylistPath(){
@@ -134,8 +134,11 @@ class SpaceViewDotScene: SKScene {
     
     func handlePinch(recognizer: UIPinchGestureRecognizer){
         let targetZoom = camera!.xScale / recognizer.scale
-        camera!.xScale = targetZoom
-        camera!.yScale = targetZoom
+        
+        if(targetZoom < MAX_ZOOM && targetZoom > MIN_ZOOM){
+            camera!.xScale = targetZoom
+            camera!.yScale = targetZoom
+        }
         recognizer.scale = 1.0//(CGPoint.zero, in: self.view)
     }
     

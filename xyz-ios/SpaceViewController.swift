@@ -50,6 +50,7 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
 //        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(self.scene)
+        skView.backgroundColor = UIColor(white:0, alpha:0)
         
     }
     

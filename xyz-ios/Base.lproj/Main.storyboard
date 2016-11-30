@@ -25,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOl-lR-Mbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1013" y="-224"/>
+            <point key="canvasLocation" x="-725" y="-224"/>
         </scene>
         <!--Landing View Controller-->
         <scene sceneID="ak7-ia-eMn">
@@ -119,9 +119,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="pgR-L8-fJW">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eyr-d8-XRo" userLabel="Scene Container" customClass="SKView">
                                 <rect key="frame" x="0.0" y="64" width="768" height="760"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NWt-GK-tCL" appends="YES" id="p2Q-zX-KNJ"/>
                                     <outletCollection property="gestureRecognizers" destination="xdT-Qb-4yE" appends="YES" id="4Pi-C3-ixc"/>
@@ -178,11 +181,15 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="top" secondItem="Eyr-d8-XRo" secondAttribute="bottom" constant="-50" id="3gg-lb-YPH"/>
+                            <constraint firstItem="pgR-L8-fJW" firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="3gp-ZN-tqE"/>
                             <constraint firstItem="g0h-xX-Xw3" firstAttribute="top" secondItem="N8V-hQ-HcV" secondAttribute="bottom" id="F1W-OJ-zny"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="leading" secondItem="YGy-YP-Lnd" secondAttribute="leading" id="HJn-iz-aDQ"/>
                             <constraint firstItem="N8V-hQ-HcV" firstAttribute="width" secondItem="YGy-YP-Lnd" secondAttribute="width" id="I3J-oN-vwK"/>
                             <constraint firstItem="Eyr-d8-XRo" firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="Jto-8o-s45"/>
+                            <constraint firstItem="pgR-L8-fJW" firstAttribute="top" secondItem="YGy-YP-Lnd" secondAttribute="top" id="LCu-dE-FS6"/>
                             <constraint firstItem="Eyr-d8-XRo" firstAttribute="leading" secondItem="N8V-hQ-HcV" secondAttribute="leading" id="Qsu-bp-bMq"/>
+                            <constraint firstItem="pgR-L8-fJW" firstAttribute="leading" secondItem="Eyr-d8-XRo" secondAttribute="leading" id="hPz-KT-Cyo"/>
+                            <constraint firstItem="pgR-L8-fJW" firstAttribute="bottom" secondItem="g0h-xX-Xw3" secondAttribute="top" id="mwz-7N-JS9"/>
                             <constraint firstAttribute="trailing" secondItem="N8V-hQ-HcV" secondAttribute="trailing" id="tne-7W-Qop"/>
                             <constraint firstItem="Eyr-d8-XRo" firstAttribute="top" secondItem="Wdj-Km-fxP" secondAttribute="bottom" id="vqn-Ho-IZP"/>
                         </constraints>
@@ -206,7 +213,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="815.625" y="-224.41406249999997"/>
+            <point key="canvasLocation" x="685.9375" y="-224.41406249999997"/>
         </scene>
         <!--AV Player View Controller-->
         <scene sceneID="uCm-SE-h5X">
@@ -214,7 +221,7 @@
                 <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="pgZ-hd-SFt" customClass="SoundcloudViewController" customModule="xyz_ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auT-rb-n56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="-224"/>
+            <point key="canvasLocation" x="1307" y="18"/>
         </scene>
     </scenes>
     <resources>
