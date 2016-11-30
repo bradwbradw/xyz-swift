@@ -23,6 +23,11 @@ struct itemState {
             if(prop == "selected")  {
              return self.selected
             }
+            
+            if(prop == "didPlay")  {
+                return self.didPlay
+            }
+
             return [false, false]
         }
         set {
@@ -31,6 +36,9 @@ struct itemState {
             }
             if(prop == "selected")  {
                 self.selected = newValue
+            }
+            if(prop == "didPlay")  {
+                self.didPlay = newValue
             }
             
         }

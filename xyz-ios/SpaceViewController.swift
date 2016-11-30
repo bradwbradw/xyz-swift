@@ -46,8 +46,8 @@ class SpaceViewController: UIViewController, YTPlayerViewDelegate {
         self.scene = SpaceViewDotScene(space: space!)
         
         let skView = sceneContainer as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+//        skView.showsFPS = false
+//        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(self.scene)
         
